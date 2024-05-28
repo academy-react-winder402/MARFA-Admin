@@ -25,7 +25,7 @@ import {
 } from "reactstrap";
 
 // ** Default Avatar Image
-import defaultAvatar from "@src/assets/images/portrait/small/avatar-s-11.jpg";
+import defaultAvatar from "@src/assets/images/portrait/small/avatar-s-7.jpg";
 
 const UserDropdown = () => {
   return (
@@ -37,8 +37,8 @@ const UserDropdown = () => {
         onClick={(e) => e.preventDefault()}
       >
         <div className="user-nav d-sm-flex d-none">
-          <span className="user-name fw-bold">John Doe</span>
-          <span className="user-status">Admin</span>
+          <span className="user-name fw-bold">MAEDE</span>
+          <span className="user-status">Admin-1</span>
         </div>
         <Avatar
           img={defaultAvatar}
@@ -50,19 +50,19 @@ const UserDropdown = () => {
       <DropdownMenu end>
         <DropdownItem tag={Link} to="/" onClick={(e) => e.preventDefault()}>
           <User size={14} className="me-75" />
-          <span className="align-middle">Profile</span>
+          <span className="align-middle">پروفایل</span>
         </DropdownItem>
         <DropdownItem tag={Link} to="/" onClick={(e) => e.preventDefault()}>
           <Mail size={14} className="me-75" />
-          <span className="align-middle">Inbox</span>
+          <span className="align-middle">ایمیل</span>
         </DropdownItem>
         <DropdownItem tag={Link} to="/" onClick={(e) => e.preventDefault()}>
           <CheckSquare size={14} className="me-75" />
-          <span className="align-middle">Tasks</span>
+          <span className="align-middle">وظایف</span>
         </DropdownItem>
         <DropdownItem tag={Link} to="/" onClick={(e) => e.preventDefault()}>
           <MessageSquare size={14} className="me-75" />
-          <span className="align-middle">Chats</span>
+          <span className="align-middle">گپ</span>
         </DropdownItem>
         <DropdownItem divider />
         <DropdownItem
@@ -71,19 +71,19 @@ const UserDropdown = () => {
           onClick={(e) => e.preventDefault()}
         >
           <Settings size={14} className="me-75" />
-          <span className="align-middle">Settings</span>
+          <span className="align-middle">تنظیمات</span>
         </DropdownItem>
         <DropdownItem tag={Link} to="/" onClick={(e) => e.preventDefault()}>
           <CreditCard size={14} className="me-75" />
-          <span className="align-middle">Pricing</span>
+          <span className="align-middle">قیمت گذاری</span>
         </DropdownItem>
         <DropdownItem tag={Link} to="/" onClick={(e) => e.preventDefault()}>
           <HelpCircle size={14} className="me-75" />
-          <span className="align-middle">FAQ</span>
+          <span className="align-middle">سوالات متداول</span>
         </DropdownItem>
         <DropdownItem tag={Link} to="/login">
           <Power size={14} className="me-75" />
-          <span className="align-middle">Logout</span>
+          <span className="align-middle">خروج</span>
         </DropdownItem>
       </DropdownMenu>
     </UncontrolledDropdown>

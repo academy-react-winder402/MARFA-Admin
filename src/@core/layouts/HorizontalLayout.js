@@ -24,6 +24,7 @@ import NavbarComponent from "./components/navbar";
 import FooterComponent from "./components/footer";
 import MenuComponent from "./components/menu/horizontal-menu";
 
+
 // ** Custom Hooks
 import { useRTL } from "@hooks/useRTL";
 import { useSkin } from "@hooks/useSkin";

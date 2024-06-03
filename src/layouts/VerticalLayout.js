@@ -17,9 +17,10 @@ const VerticalLayout = (props) => {
   // }, [])
 
   return (
-    <Layout menuData={navigation} {...props}>
+    <Layout className='' menuData={navigation} {...props}>
       <Outlet />
     </Layout>
+  
   );
 };
 

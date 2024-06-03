@@ -1,4 +1,4 @@
-import { Mail, Home, Airplay, Circle } from "react-feather";
+import {List,Users,Airplay,File,Home, Circle } from "react-feather";
 
 export default [
   {
@@ -8,22 +8,40 @@ export default [
     navLink: "/home",
   },
   {
-    id: "secondPage",
+    id: "Users",
     title: " کاربران",
-    icon: <Mail size={20} />,
-    navLink: "/second-page",
+    icon: <Users size={20} />,
+    navLink: "/Users",
   },
   {
-    id: "smaplePage",
+    id: "Curses",
     title: " دوره ها",
-    icon: <Airplay size={20} />,
+    icon: <List size={20} />,
     // navLink: "/sample",
     children: [
       {
-        id: "invoiceList",
-        title: "List",
+        id: "ListCurses",
+        title: "لیست دوره ها",
+        icon: < Circle size={12} />,
+        navLink: "/ListCurses",
+      },
+      {
+        id: "ListCursesUser",
+        title: "لیست دوره های شما",
         icon: <Circle size={12} />,
-        navLink: "/apps/invoice/list",
+        navLink: "/ListCursesUser",
+      },
+      {
+        id: "SelectionListCursesUse",
+        title: "دوره های رزرو شده کاربران",
+        icon: <File size={12} />,
+        navLink: "/SelectionListCursesUse",
+      },
+      {
+        id: "CreatNewCurses",
+        title: "ساخت دوره جدید",
+        icon: <Circle size={12} />,
+        navLink: "/CreatNewCurses",
       },
     ],
   },

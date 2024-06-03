@@ -8,19 +8,23 @@
   url('fonts/feather.svg?t=1525787366991#feather') format('svg'); /* iOS 4.1- */
 }
 
-.feather {
-  /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: 'feather' !important;
+@font-face {
+  font-family:'IranSans';
+  src:url('fonts/IranSans.ttf');
+}
+@import url('https://fonts.cdnfonts.com/css/persian');
+html , body{
+  /* font-family: 'yekan' !important; */
+  font-family: 'Persian', sans-serif;
+}
+.IranSansFont{
+  font-family: 'IranSans' !important;
   speak: none;
   font-style: normal;
   font-weight: normal;
   font-variant: normal;
   text-transform: none;
-  line-height: 1;
-
-  /* Better Font Rendering =========== */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  line-height: 1
 }
 
 .icon-alert-octagon:before { content: "\e81b"; }

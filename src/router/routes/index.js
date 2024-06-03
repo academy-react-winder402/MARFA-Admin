@@ -23,15 +23,19 @@ const getLayout = {
 const TemplateTitle = "%s - Vuexy React Admin Template";
 
 // ** Default Route
-const DefaultRoute = "/home";
+const DefaultRoute = "/login";
 
 const Home = lazy(() => import("../../pages/Home"));
-const SecondPage = lazy(() => import("../../pages/SecondPage"));
+const Users = lazy(() => import("../../pages/Users"));
+const Curses = lazy(() => import("../../pages/coursespage/Curses"));
 const Login = lazy(() => import("../../pages/Login"));
 const Register = lazy(() => import("../../pages/Register"));
 const ForgotPassword = lazy(() => import("../../pages/ForgotPassword"));
 const Error = lazy(() => import("../../pages/Error"));
-const Sample = lazy(() => import("../../pages/Sample"));
+const ListCurses = lazy(() => import("../../pages/coursespage/ListCurses"));
+const ListCursesUser = lazy(() => import("../../pages/coursespage/ListCursesUser"));
+const CreatNewCurses = lazy(() => import("../../pages/coursespage/CreatNewCurses"));
+const SelectionListCursesUse = lazy(() => import("../../pages/coursespage/SelectionListCursesUse"));
 
 // ** Merge Routes
 const Routes = [
@@ -44,13 +48,30 @@ const Routes = [
     path: "/home",
     element: <Home />,
   },
+  
   {
-    path: "/sample",
-    element: <Sample />,
+    path: "/Users",
+    element: <Users />,
   },
   {
-    path: "/second-page",
-    element: <SecondPage />,
+    path: "/Curses",
+    element: <Curses />,
+  },
+  {
+    path: "/ListCursesUser",
+    element: <ListCursesUser />,
+  },
+  {
+    path: "/SelectionListCursesUse",
+    element: <SelectionListCursesUse />,
+  },
+  {
+    path: "/CreatNewCurses",
+    element: <CreatNewCurses />,
+  },
+  {
+    path: "/ListCurses",
+    element: <ListCurses />,
   },
   {
     path: "/login",

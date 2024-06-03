@@ -9,7 +9,7 @@ import { Provider } from "react-redux";
 
 // ** ThemeColors Context
 
-import { ThemeContext } from '../src/views/AllUse/ThemeColors';
+import { ThemeContext } from '../src/utility/context/ThemeColors';
 
 // ** ThemeConfig
 import themeConfig from "./configs/themeConfig";

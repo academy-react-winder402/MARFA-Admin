@@ -7,6 +7,7 @@ import VerticalLayout from "@src/layouts/VerticalLayout";
 import HorizontalLayout from "@src/layouts/HorizontalLayout";
 import LayoutWrapper from "@src/@core/layouts/components/layout-wrapper";
 
+
 // ** Route Components
 import PublicRoute from "@components/routes/PublicRoute";
 
@@ -26,16 +27,20 @@ const TemplateTitle = "%s - Vuexy React Admin Template";
 const DefaultRoute = "/login";
 
 const Home = lazy(() => import("../../pages/Home"));
-const Users = lazy(() => import("../../pages/Users"));
-const Curses = lazy(() => import("../../pages/coursespage/Curses"));
+const Users = lazy(() => import("../../pages/UsersPage/ListUsers"));
+const Curses = lazy(() => import("../../pages/Curses"));
 const Login = lazy(() => import("../../pages/Login"));
 const Register = lazy(() => import("../../pages/Register"));
 const ForgotPassword = lazy(() => import("../../pages/ForgotPassword"));
 const Error = lazy(() => import("../../pages/Error"));
-const ListCurses = lazy(() => import("../../pages/coursespage/ListCurses"));
-const ListCursesUser = lazy(() => import("../../pages/coursespage/ListCursesUser"));
-const CreatNewCurses = lazy(() => import("../../pages/coursespage/CreatNewCurses"));
-const SelectionListCursesUse = lazy(() => import("../../pages/coursespage/SelectionListCursesUse"));
+const ListCurses = lazy(() => import("../../@core/components/componentCourses/coursespageMain/ListCurses"));
+const ListUsers = lazy(() => import("../../pages/UsersPage/ListUsers"));
+const CreateNewUser = lazy(() => import("../../pages/UsersPage/CreateNewUser"));
+const ListCursesUser = lazy(() => import("../../@core/components/componentCourses/coursespageMain/ListCursesUser"));
+const CreatNewCurses = lazy(() => import("../../@core/components/componentCourses/coursespageMain/CreatNewCurses"));
+const SelectionListCursesUse = lazy(() => import("../../@core/components/componentCourses/coursespageMain/SelectionListCursesUse"));
+const UpdadeUsre = lazy(() => import('../../@core/components/UpdadeUsre/UpdadeUsre'));
+const Profile = lazy(() => import('../../@core/components/Profile'));
 
 // ** Merge Routes
 const Routes = [
@@ -54,23 +59,39 @@ const Routes = [
     element: <Users />,
   },
   {
+    path: "/Users/UserDetails/:id",
+    element: <Profile/>
+  },
+  {
+    path: '/Users/UserDetails/:id',
+    element: <UpdadeUsre/>,
+  },
+  {
+    path: "/UsersList/ListUsers",
+    element: <ListUsers/>,
+  },
+  {
+    path: "UsersList/CreateNewUser",
+    element: <CreateNewUser />,
+  },
+  {
     path: "/Curses",
     element: <Curses />,
   },
   {
-    path: "/ListCursesUser",
+    path: "/Curses/ListCursesUser",
     element: <ListCursesUser />,
   },
   {
-    path: "/SelectionListCursesUse",
+    path: "/Curses/SelectionListCursesUse",
     element: <SelectionListCursesUse />,
   },
   {
-    path: "/CreatNewCurses",
+    path: "/Curses/CreatNewCurses",
     element: <CreatNewCurses />,
   },
   {
-    path: "/ListCurses",
+    path: "/Curses/ListCurses",
     element: <ListCurses />,
   },
   {

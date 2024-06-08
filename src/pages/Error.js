@@ -10,6 +10,7 @@ import { useSkin } from "@hooks/useSkin";
 // ** Illustrations Imports
 import illustrationsLight from "@src/assets/images/pages/error.svg";
 import illustrationsDark from "@src/assets/images/pages/error-dark.svg";
+import logo from "@src/assets/images/logo/logo3.png";
 
 // ** Styles
 import "@styles/base/pages/page-misc.scss";
@@ -22,8 +23,8 @@ const Error = () => {
 
   return (
     <div className="misc-wrapper">
-      <a className="brand-logo" href="/">
-        <svg viewBox="0 0 139 95" version="1.1" height="28">
+      <a className="brand-logo"  href="/">
+        {/* <svg viewBox="0 0 139 95" version="1.1" height="28">
           <defs>
             <linearGradient
               x1="100%"
@@ -88,14 +89,15 @@ const Error = () => {
               </g>
             </g>
           </g>
-        </svg>
+        </svg> */}
+        <img src={logo} style={{width:'50px'}} alt=" Logo" />
         <h2 className="brand-text text-primary ms-1">MARFA TAK-TIK</h2>
       </a>
       <div className="misc-inner p-2 p-sm-3">
         <div className="w-100 text-center">
-          <h2 className="mb-1">Page Not Found 🕵🏻‍♀️</h2>
+          <h2 className="mb-1">صفحه در دسترس نیست 🕵🏻‍♀️</h2>
           <p className="mb-2">
-            Oops! 😖 The requested URL was not found on this server.
+             😖!پوزش .
           </p>
           <Button
             tag={Link}
@@ -103,7 +105,7 @@ const Error = () => {
             color="primary"
             className="btn-sm-block mb-2"
           >
-            Back to home
+           بازگشت به خانه
           </Button>
           <img className="img-fluid" src={source} alt="Not authorized page" />
         </div>

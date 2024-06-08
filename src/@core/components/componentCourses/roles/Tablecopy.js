@@ -6,7 +6,8 @@ import { columns } from './columns'
 
 // ** Store & Actions
 import { useDispatch, useSelector } from 'react-redux'
-// import { getAllData, getData } from '@src/views/apps/user/store'
+import { getAllData, getData } from '@src/views/apps/user/store'
+import {data} from '../roles/data2'
 
 // ** Third Party Components
 import ReactPaginate from 'react-paginate'
@@ -18,7 +19,6 @@ import { Card, Input, Row, Col } from 'reactstrap'
 
 // ** Styles
 import '@styles/react/libs/tables/react-dataTable-component.scss'
-import { data } from './data2'
 
 // ** Bootstrap Checkbox Component
 const BootstrapCheckbox = forwardRef((props, ref) => (
@@ -50,10 +50,7 @@ const CustomHeader = ({ plan, handlePlanChange, handlePerPage, rowsPerPage, hand
             <label htmlFor='rows-per-page'>Entries</label>
           </div>
         </Col>
-        <Col
-          xl='6'
-          className='d-flex align-items-sm-center justify-content-lg-end justify-content-start flex-lg-nowrap flex-wrap flex-sm-row flex-column pe-lg-1 p-0 mt-lg-0 mt-1'
-        >
+        <Col xl='6' className='d-flex align-items-sm-center justify-content-lg-end justify-content-start flex-lg-nowrap flex-wrap flex-sm-row flex-column pe-lg-1 p-0 mt-lg-0 mt-1'>
           <div className='d-flex align-items-center mb-sm-0 mb-1 me-1'>
             <label className='mb-0' htmlFor='search-invoice'>
               Search:
@@ -83,7 +80,8 @@ const Table = () => {
   // ** Store Vars
   const dispatch = useDispatch()
   const store = data
-console.log(store);
+  console.log(store)
+
   // ** States
   const [plan, setPlan] = useState('')
   const [sort, setSort] = useState('desc')
@@ -93,25 +91,21 @@ console.log(store);
   const [sortColumn, setSortColumn] = useState('id')
 
   // ** Get data on mount
-
-  
-  const [getData, setGateData] = useState()
   useEffect(() => {
-    // dispatch(getAllData())
-    // dispatch(
-      setGateData({
+    dispatch(getAllData())
+    dispatch(
+      getData({
         sort,
+        role: '',
         sortColumn,
-        Query: searchTerm,
-        PageNumber: currentPage,
-        RowsOfPage: rowsPerPage
+        status: '',
+        q: searchTerm,
+        currentPlan: plan,
+        page: currentPage,
+        perPage: rowsPerPage
       })
-    // )
-  }, [setGateData])
-
-  const fetchGetAllData = async() => {
-    axios.get('/Course/CourseList',{getData})
-  } 
+    )
+  }, [dispatch, store.data.length])
 
   // ** Function in get data on page change
   const handlePagination = page => {
@@ -218,6 +212,8 @@ console.log(store);
       return store.data
     } else if (store.data.length === 0 && isFiltered) {
       return []
+    } else {
+      return store.allData.slice(0, rowsPerPage)
     }
   }
 

@@ -9,6 +9,7 @@ import { useEffect, useState , useRef } from "react";
 import Search from "antd/es/input/Search";
 import MyNavbar from "./MyNavbar";
 import CourseGroup from "./CourseGroup/CourseGroup";
+// import StatsCard from "../../componentsDashbord/StatsCard";
 
 
 
@@ -33,7 +34,7 @@ const TableCourses = () => {
     const result = await http.get(
       `/Course/CourseList?PageNumber=1&RowsOfPage=10&SortingCol=DESC&SortType=Expire&Query${search}`
     );
-    // console.log(result);
+    console.log(result);
     return result;
   };
 
@@ -50,32 +51,82 @@ const TableCourses = () => {
     <div className='invoice-list-table-header w-100  me-1 ms-50 mt-2 mb-75'>
       <Row>
       
-      <MyNavbar/>
+      <Col xl="12" md="6" xs="12">
+            {/* <StatsCard cols={{ xl: "3", sm: "6" }} /> */}
+       </Col>
       
-      <h2>تمام دوره ها :</h2>
+      <h2>دوره های ترم جاری :</h2>
 
-      <Input onChange={handleSearch}  type='text' placeholder='جستجو دوره' />
-
-      <Table responsive>
+      {/* <Input onChange={handleSearch}  type='text' placeholder='جستجو دوره' /> */}
+      <div className='invoice-list-table-header w-100 me-1 ms-50 mt-2 mb-75'>
+        <Row>
+        <Col xl='6' className='d-flex align-items-center p-0'>
+          <div className='d-flex align-items-center w-100'>
+            <label htmlFor='rows-per-page'>نمایش</label>
+            <Input
+              className='mx-50'
+              type='select'
+              id='rows-per-page'
+              // value={rowsPerPage}
+              // onChange={handlePerPage}
+              style={{ width: '5rem' }}
+            >
+          
+              <option value='10'>10</option>
+              <option value='25'>25</option>
+              <option value='50'>50</option>
+            </Input>
+            <label htmlFor='rows-per-page'>صفحه</label>
+          </div>
+        </Col>
+        <Col
+          xl='6'
+          className='d-flex align-items-sm-center justify-content-lg-end justify-content-start flex-lg-nowrap flex-wrap flex-sm-row flex-column pe-lg-1 p-0 mt-lg-0 mt-1'
+        >
+          <div className='d-flex align-items-center mb-sm-0 mb-1 me-1'>
+            <label className='mb-0' htmlFor='search-invoice'>
+             جستجو
+            </label>
+            <Input
+              type='text'
+              value={handleSearch}
+              id='search-invoice'
+              className='ms-50 w-100'
+              onChange={e => handleFilter(e.target.value)}
+            />
+          </div>
+          {/* <Input value={plan} type='select' style={{ width: '10rem' }} onChange={e => handlePlanChange(e.target.value)}>
+            <option value=''>Select Role</option>
+            <option value='basic'>Basic</option>
+            <option value='company'>Company</option>
+            <option value='enterprise'>Enterprise</option>
+            <option value='team'>Team</option>
+          </Input> */}
+        </Col>
+      </Row>
+        </div>
+      <Table responsive className="mt-3 table-hover dark-layout table table-bordered ">
       
-        <thead>
-          <tr>
+        <thead >
+          <tr style={{height:'50px',  paddingTop:'5px'}}>
             <th className="text-nowrap ">نام دوره</th>
             <th className="text-nowrap ">مدرس دوره</th>
             <th className="text-nowrap ">نوع دوره</th>
             <th className="text-nowrap ">قیمت</th>
             <th className="text-nowrap ">وضعیت برگزاری</th>
             <th className="text-nowrap ">وضعیت </th>
+            <th className="text-nowrap ">حذف/ویرایش </th>
+            <th className="text-nowrap ">جرییات </th>
           </tr>
         </thead>
         
-        <tbody>
+        <tbody >
           {data &&
             data.courseDtos.map((item, index) => {
               return (
               
                   
-                  <CourseItem
+                  <CourseItem 
                     key={index}
                     id={item.courseId}
                     fullName={item.fullName}

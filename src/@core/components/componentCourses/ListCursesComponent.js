@@ -1,22 +1,27 @@
-import { Card, CardHeader, CardBody, CardTitle, CardText } from "reactstrap";
-
+// ** User List Component
+// import Table from './Table'
 // ** Reactstrap Imports
 import { Row, Col, Breadcrumb } from 'reactstrap'
 
 // ** Custom Components
-import StatsHorizontal from '../../@core/components/widgets/stats/StatsHorizontal'
+// import StatsHorizontal from '@components/widgets/stats/StatsHorizontal'
 
 // ** Icons Imports
 import { User, UserPlus, UserCheck, UserX } from 'react-feather'
-import CompanyTable from "../../@core/components/componentsDashbord/CompanyTable";
-// import RoleCards from "../../@core/components/componentCourses/roles/RoleCards";
-// import CompanyTable2 from "../../@core/components/componentCourses/CourseTable/CompanyTable2";
-// import CompanyTable from "../../@core/components/componentsDashbord/CompanyTable";
 
-const ListCursesUser = () => {
+// ** Styles
+import '@styles/react/apps/app-users.scss'
+// import Table from './ComponentCourse/Table'
+
+import Breadcrumbs from '@components/breadcrumbs'
+import StatsHorizontal from '../../components/widgets/stats/StatsHorizontal'
+import TableCourses from '../componentCourses/CourseTable/TableCourses'
+
+const ListCursesComponent = () => {
   return (
-   <div>
-     <Row>
+    <div className='app-user-list'>
+     <Breadcrumbs title=' دوره ها' data={[{ title: 'دوره ها' }, { title: 'لیست دوره ' }]} />
+      <Row>
         <Col lg='3' sm='6'>
           <StatsHorizontal
             color='primary'
@@ -50,16 +55,14 @@ const ListCursesUser = () => {
           />
         </Col>
       </Row>
-      
-      <Row className="match-height">
+      <Row className="match-height ">
           <Col lg="12" xs="12">
-          {/* </Table> */}
+            <TableCourses />
           </Col>
         </Row>
-       
-       <CompanyTable/>
-   </div>
-  );
-};
+       {/* <Table/> */}
+    </div>
+  )
+}
 
-export default ListCursesUser;
+export default ListCursesComponent

@@ -1,12 +1,13 @@
 import { Card, CardHeader, CardBody, CardTitle, CardText } from "reactstrap";
 
 
-import CreatCourseList from "../../@core/components/componentCourses/FormCreatCourse/CreatCourseList";
+import CreatCourseList from "../FormCreatCourse/CreatCourseList";
 
 const CreatNewCurses = () => {
   return (
     <>
     <CreatCourseList/>
+    {/* <Wizard/> */}
     </>
     
   );

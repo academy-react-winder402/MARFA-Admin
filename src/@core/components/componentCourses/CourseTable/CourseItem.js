@@ -65,20 +65,21 @@ function CourseItem({
   };
 
   return (
-    <tr>
+    <tr > 
       <td className="text-nowrap ">
         <div  style={{width:'150px' , overflow: "hidden" , }}>{title}</div>
       </td>
       <td className="text-nowrap ">
         <div  style={{width:'150px' , overflow: "hidden" , }}>{fullName}</div>
       </td>
-      <td className="text-nowrap ">{typeName}</td>
+      <td className="text-nowrap">{typeName}</td>
       <td className="text-nowrap ">{cost}</td>
-      <td>
+      <td className="text-nowrap ">
         <Button
-          
+          // className={`isActive === true ? text-info : text-danger`}
           pill
-          color={isActive === true ? "success" : 'danger'}
+          color={isActive === true ? "primary" : 'warning'}
+          // text={isActive === true ? "info" : 'danger'}
          
           onClick={handleActive}
         >
@@ -86,19 +87,34 @@ function CourseItem({
         </Button>
       </td>
 
-      <td   style={{width:'10px'}}>
+      <td   style={{width:'10px'}} className="text-nowrap ">
         <Button
         style={{width:'150px' , overflow: "hidden" , }}
           pill
-          color={isdelete === true ? 'danger' : 'success'}
+          color={isdelete === true ? 'warning' : 'primary'}
           onClick={(isdelete)=>handleDelete(isdelete)}
 
         >
           {isdelete === true ? " حذف شده" : "انتخاب شده " }
         </Button>          
       </td>
+      <td className="text-nowrap ">
+         <UncontrolledDropdown>
+              <DropdownToggle className='icon-btn hide-arrow' color='transparent' size='sm' caret>
+                <MoreVertical size={15} />
+              </DropdownToggle>
+              <DropdownMenu>
+                <DropdownItem href='/' onClick={e => e.preventDefault()}>
+                  <Edit className='me-50' size={15} /> <span className='align-middle'>ویرایش</span>
+                </DropdownItem>
+                <DropdownItem href='/' onClick={e => e.preventDefault()}>
+                  <Trash className='me-50' size={15} /> <span className='align-middle'>حذف</span>
+                </DropdownItem>
+              </DropdownMenu>
+         </UncontrolledDropdown>
+      </td>
 
-      <td>
+      <td className="text-nowrap ">
         <Button
           pill
           color="primary"

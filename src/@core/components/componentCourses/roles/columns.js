@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom'
 // ** Custom Components
 import Avatar from '@components/avatar'
 
-// ** Store & Actions
-import { store } from '@store/store'
-import { getUser } from '@src/views/apps/user/store'
+// ** data & Actions
+import { data } from './data2'
+// import { getUser } from '@src/views/apps/user/data'
 
 // ** Icons Imports
 import { Slack, User, Settings, Database, Edit2, Eye } from 'react-feather'
@@ -85,7 +85,7 @@ export const columns = [
           <Link
             to={`/apps/user/view/${row.id}`}
             className='user_name text-truncate text-body'
-            onClick={() => store.dispatch(getUser(row.id))}
+            onClick={() => data.dispatch(getUser(row.id))}
           >
             <span className='fw-bold'>{row.fullName}</span>
           </Link>

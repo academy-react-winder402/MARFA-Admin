@@ -29,7 +29,9 @@ import CardMedal from "../@core/components/componentsDashbord/CardMedal";
 import StatsCard from "../@core/components/componentsDashbord/StatsCard";
 import CardMeetup from "../@core/components/componentsDashbord/CardMeetup";
 import CompanyTable from "../@core/components/componentsDashbord/CompanyTable";
+import CompanyTable2 from "../@core/components/componentsDashbord/CompanyTable2";
 import SupportTracker from "../@core/components/componentsDashbord/SupportTracker";
+import AllListUser from "../../src/@core/components/componentsDashbord/AllListUser";
 // import SupportTracker from './componentsDashbord/SupportTracker'
 
 const Home = () => {
@@ -70,10 +72,12 @@ const Home = () => {
     </Row> */}
         <Row className="match-height">
           <Col lg="8" xs="12">
-            <CompanyTable />
+            {/* <CompanyTable /> */}
+            <CompanyTable2/>
           </Col>
           <Col lg="4" md="6" xs="12">
             <CardMeetup />
+            {/* <AllListUser/> */}
           </Col>
           <Col lg="6" xs="12">
             <SupportTracker

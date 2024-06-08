@@ -28,6 +28,7 @@ import illustrationsDark from "@src/assets/images/pages/register-v2-dark.svg";
 
 // ** Styles
 import "@styles/react/pages/page-authentication.scss";
+import logo from "@src/assets/images/logo/logo3.png";
 
 const Register = () => {
   // ** Hooks
@@ -39,7 +40,7 @@ const Register = () => {
     <div className="auth-wrapper auth-cover">
       <Row className="auth-inner m-0">
         <Link className="brand-logo" to="/" onClick={(e) => e.preventDefault()}>
-          <svg viewBox="0 0 139 95" version="1.1" height="28">
+          {/* <svg viewBox="0 0 139 95" version="1.1" height="28">
             <defs>
               <linearGradient
                 x1="100%"
@@ -104,7 +105,8 @@ const Register = () => {
                 </g>
               </g>
             </g>
-          </svg>
+          </svg> */}
+           <img src={logo} style={{width:'50px'}} alt=" Logo" />
           <h2 className="brand-text text-primary ms-1">MARFA</h2>
         </Link>
         <Col className="d-none d-lg-flex align-items-center p-5" lg="8" sm="12">
@@ -119,10 +121,10 @@ const Register = () => {
         >
           <Col className="px-xl-2 mx-auto" xs="12" sm="8" md="6" lg="12">
             <CardTitle tag="h2" className="fw-bold mb-1">
-              Adventure starts here 🚀
+             ایجاد حساب جدید 🚀
             </CardTitle>
             <CardText className="mb-2">
-              Make your app management easy and fun!
+             مدیریت برنامه 
             </CardText>
             <Form
               className="auth-register-form mt-2"
@@ -130,7 +132,7 @@ const Register = () => {
             >
               <div className="mb-1">
                 <Label className="form-label" for="register-username">
-                  Username
+                  نام کاربری
                 </Label>
                 <Input
                   type="text"
@@ -141,17 +143,17 @@ const Register = () => {
               </div>
               <div className="mb-1">
                 <Label className="form-label" for="register-email">
-                  Email
+                  ایمیل
                 </Label>
                 <Input
                   type="email"
                   id="register-email"
-                  placeholder="john@example.com"
+                  placeholder="MARFA@example.com"
                 />
               </div>
               <div className="mb-1">
                 <Label className="form-label" for="register-password">
-                  Password
+                  پسورد
                 </Label>
                 <InputPasswordToggle
                   className="input-group-merge"
@@ -161,24 +163,24 @@ const Register = () => {
               <div className="form-check mb-1">
                 <Input type="checkbox" id="terms" />
                 <Label className="form-check-label" for="terms">
-                  I agree to
+                   با  شرایط و قوانین سایت موافق هستم
                   <a
                     className="ms-25"
                     href="/"
                     onClick={(e) => e.preventDefault()}
                   >
-                    privacy policy & terms
+                       {/* با شرایط و قوانین سایت  */}
                   </a>
                 </Label>
               </div>
               <Button tag={Link} to="/" color="primary" block>
-                Sign up
+              ثبت نام
               </Button>
             </Form>
             <p className="text-center mt-2">
-              <span className="me-25">Already have an account?</span>
+              <span className="me-25">از قبل حساب کاربری دارید؟</span>
               <Link to="/login">
-                <span>Sign in instead</span>
+                <span>وارد سیستم شوید</span>
               </Link>
             </p>
             <div className="divider my-2">

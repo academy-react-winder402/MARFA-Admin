@@ -29,6 +29,7 @@ import illustrationsDark from "@src/assets/images/pages/login-v2-dark.svg";
 import "@styles/react/pages/page-authentication.scss";
 import { Formik } from "formik";
 import { setItem } from "../localStorage/localStorage";
+import logo from "@src/assets/images/logo/logo3.png";
 
 const Login = () => {
   const { skin } = useSkin();
@@ -51,7 +52,7 @@ const Login = () => {
     <div className="auth-wrapper auth-cover">
       <Row className="auth-inner m-0">
         <Link className="brand-logo" to="/" onClick={(e) => e.preventDefault()}>
-          <svg viewBox="0 0 139 95" version="1.1" height="28">
+          {/* <svg viewBox="0 0 139 95" version="1.1" height="28">
             <defs>
               <linearGradient
                 x1="100%"
@@ -116,7 +117,9 @@ const Login = () => {
                 </g>
               </g>
             </g>
-          </svg>
+          </svg> */}
+
+         <img  style={{width:'50px'}} src={logo} alt=" Logo" />
           <h2 className="brand-text text-primary ms-1">MARFA </h2>
         </Link>
         <Col className="d-none d-lg-flex align-items-center p-5" lg="8" sm="12">
@@ -131,10 +134,10 @@ const Login = () => {
         >
           <Col className="px-xl-2 mx-auto" sm="8" md="6" lg="12">
             <CardTitle tag="h2" className="fw-bold mb-1">
-              Welcome to MARFA! 👋
+          👋به مارفا خوش آمدید  
             </CardTitle>
             <CardText className="mb-2">
-              Please sign-in to your account and start the adventure
+            لطفا وارد حساب کاربری خود شوید 
             </CardText>
             <Formik initialValues={{ phoneOrGmail: '', password:'',rememberMe:false }} onSubmit={handleLogin}>
             {({  handleSubmit, handleChange,values }) => (
@@ -161,9 +164,9 @@ const Login = () => {
                       <Label className="form-label" for="login-password">
                         Password
                       </Label>
-                      <Link to="/forgot-password">
-                        <small>Forgot Password?</small>
-                      </Link>
+                      {/* <Link to="/forgot-password">
+                        <small>فراموشی رمز?</small>
+                      </Link> */}
                     </div>
                     <InputPasswordToggle
                       className="input-group-merge"
@@ -173,26 +176,36 @@ const Login = () => {
                       onChange={handleChange}
                     />
                   </div>
-                  <div className="form-check mb-1">
+                 
+
+                 <div className="form-check mb-1  ">
                     <Input onChange={handleChange}  type="checkbox" id="remember-me" name='rememberMe' />
                     <Label className="form-check-label" for="remember-me">
-                      Remember Me
+                     به خاطر بسپار
                     </Label>
+                    
                   </div>
+                  <div className="form-check mb-1">
+                    <Link to="/forgot-password">
+                        <small>فراموشی رمز ؟</small>
+                     </Link>
+                    
+                  </div>
+              
                   <Button type="submit" color="primary" block>
-                    Sign in
+                    ورود
                   </Button>
                 </Form>
             )}
             </Formik>
             <p className="text-center mt-2">
-              <span className="me-25">New on our platform?</span>
+              <span className="me-25">حساب کاربری دارید؟</span>
               <Link to="/register">
-                <span>Create an account</span>
+                <span>ایجاد حساب  کاربری</span>
               </Link>
             </p>
             <div className="divider my-2">
-              <div className="divider-text">or</div>
+              <div className="divider-text">یا</div>
             </div>
             <div className="auth-footer-btn d-flex justify-content-center">
               <Button color="facebook">

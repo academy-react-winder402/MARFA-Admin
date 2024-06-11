@@ -1,13 +1,14 @@
-import { Card, CardHeader, CardBody, CardTitle, CardText } from "reactstrap";
-
-
-import CreatCourseList from "../FormCreatCourse/CreatCourseList";
+import WizardModern from "../wizard/WizardModern";
 
 const CreatNewCurses = () => {
   return (
     <>
-    <CreatCourseList/>
-    {/* <Wizard/> */}
+    <div>
+   
+    <WizardModern/>
+    </div>
+    
+   
     </>
     
   );

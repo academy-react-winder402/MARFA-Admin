@@ -60,6 +60,7 @@ const ListCursesComponent = () => {
             <TableCourses />
           </Col>
         </Row>
+        
        {/* <Table/> */}
     </div>
   )

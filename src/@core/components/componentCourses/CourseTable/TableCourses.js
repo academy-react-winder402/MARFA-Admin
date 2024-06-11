@@ -34,7 +34,7 @@ const TableCourses = () => {
     const result = await http.get(
       `/Course/CourseList?PageNumber=1&RowsOfPage=10&SortingCol=DESC&SortType=Expire&Query${search}`
     );
-    console.log(result);
+    // console.log(result);
     return result;
   };
 
@@ -44,7 +44,7 @@ const TableCourses = () => {
 
 
   const show2 = (x) =>{
-    console.log(x);
+    // console.log(x);
   }
  
   return (

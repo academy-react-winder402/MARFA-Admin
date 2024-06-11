@@ -17,9 +17,9 @@ const IconPagination = ({ total, apiParam, setApiParam }) => {
 
   const pageChange = (event) => {
     const newOffset = (event.selected++ * apiParam?.RowsOfPage) % total;
-    console.log(
-      `User requested page number ${event.selected}, which is offset ${newOffset}`
-    );
+    // console.log(
+    //   `User requested page number ${event.selected}, which is offset ${newOffset}`
+    // );
     setApiParam((prevState) => ({
       ...prevState,
       PageNumber: event.selected,

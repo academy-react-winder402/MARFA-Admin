@@ -14,6 +14,7 @@ import PublicRoute from "@components/routes/PublicRoute";
 // ** Utils
 import { isObjEmpty } from "@utils";
 
+
 const getLayout = {
   blank: <BlankLayout />,
   vertical: <VerticalLayout />,
@@ -41,6 +42,12 @@ const CreatNewCurses = lazy(() => import("../../@core/components/componentCourse
 const SelectionListCursesUse = lazy(() => import("../../@core/components/componentCourses/coursespageMain/SelectionListCursesUse"));
 const UpdadeUsre = lazy(() => import('../../@core/components/UpdadeUsre/UpdadeUsre'));
 const Profile = lazy(() => import('../../@core/components/Profile'));
+const NewsPage = lazy(() => import('../../../src/pages/NewsPage'));
+const NewsList = lazy(() => import('../../@core/components/NewsALLComponent/NewsList/NewsList'));
+const NewsCreatnew = lazy(() => import('../../@core/components/NewsALLComponent/NewsCreatnew'));
+const NewsCategory = lazy(() => import('../../@core/components/NewsALLComponent/NewsCategory'));
+const DetailsCourse = lazy(() => import('../../@core/components/componentCourses/CourseListsecondcomponent/DetailsCourse'));
+const EditCourse = lazy(() => import('../../@core/components/componentCourses/CourseListsecondcomponent/EditCourse'));
 
 // ** Merge Routes
 const Routes = [
@@ -83,6 +90,14 @@ const Routes = [
     element: <ListCursesUser />,
   },
   {
+    path: "/Curses/ListCurses/DetailsCourse/:id",
+    element: <DetailsCourse />,
+  },
+  {
+    path: "/DetailsCourse/EditCourse/:id",
+    element: <EditCourse />,
+  },
+  {
     path: "/Curses/SelectionListCursesUse",
     element: <SelectionListCursesUse />,
   },
@@ -94,6 +109,24 @@ const Routes = [
     path: "/Curses/ListCurses",
     element: <ListCurses />,
   },
+  // News
+  {
+    path: "/NewsPage",
+    element: <NewsPage />,
+  },
+  {
+    path: "/NewsPage/NewsList",
+    element: <NewsList />,
+  },
+  {
+    path: "/NewsPage/NewsCreatnew",
+    element: <NewsCreatnew />,
+  },
+  {
+    path: "/NewsPage/NewsCategory",
+    element: <NewsCategory />,
+  },
+  // ene
   {
     path: "/login",
     element: <Login />,

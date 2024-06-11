@@ -31,6 +31,7 @@ const Wizard = forwardRef((props, ref) => {
   // ** Vars
   let stepper = null;
 
+
   // ** Step change listener on mount
   useEffect(() => {
     stepper = new Stepper(ref.current, options);

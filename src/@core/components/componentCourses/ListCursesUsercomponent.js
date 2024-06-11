@@ -9,10 +9,12 @@ import StatsHorizontal from "../widgets/stats/StatsHorizontal";
 
 // ** Icons Imports
 import { User, UserPlus, UserCheck, UserX } from 'react-feather'
-import CompanyTable from "../componentsDashbord/CompanyTable";
+import TableCoursesListYou from "./CursesListYouComponent/TableCoursesListYou";
 
 
 const ListCursesUsercomponent = () => {
+ 
+  // ****
   return (
    <div>
      <Row>
@@ -48,15 +50,15 @@ const ListCursesUsercomponent = () => {
             renderStats={<h3 className='fw-bolder mb-75'>237</h3>}
           />
         </Col>
-      </Row>
+     </Row>
       
       <Row className="match-height">
           <Col lg="12" xs="12">
+         <TableCoursesListYou/>
           {/* </Table> */}
           </Col>
         </Row>
-       
-       <CompanyTable/>
+      
    </div>
   );
 };

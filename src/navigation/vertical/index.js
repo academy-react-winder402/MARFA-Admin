@@ -61,16 +61,28 @@ export default [
     ],
   },
   {
-    id: "smaplePage",
+    id: "NewsPage",
     title: " اخبار ",
     icon: <Airplay size={20} />,
-    // navLink: "/sample",
+    navLink: "/NewsPage",
     children: [
       {
-        id: "invoiceList",
-        title: "List",
+        id: "NewsList",
+        title: "لیست اخبار",
         icon: <Circle size={12} />,
-        navLink: "/apps/invoice/list",
+        navLink: "/NewsPage/NewsList",
+      },
+      {
+        id: "NewsCreatnew",
+        title: "ایجاد خبر جدید",
+        icon: <Circle size={12} />,
+        navLink: "/NewsPage/NewsCreatnew",
+      },
+      {
+        id: "NewsCategory",
+        title: "دسته بندی خبر",
+        icon: <Circle size={12} />,
+        navLink: "/NewsPage/NewsCategory",
       },
     ],
   },

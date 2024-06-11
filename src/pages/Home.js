@@ -32,6 +32,7 @@ import CompanyTable from "../@core/components/componentsDashbord/CompanyTable";
 import CompanyTable2 from "../@core/components/componentsDashbord/CompanyTable2";
 import SupportTracker from "../@core/components/componentsDashbord/SupportTracker";
 import AllListUser from "../../src/@core/components/componentsDashbord/AllListUser";
+import ListTeacherBahrAcavemi from "../@core/components/componentsDashbord/ListTeacherBahrAcavemi";
 // import SupportTracker from './componentsDashbord/SupportTracker'
 
 const Home = () => {
@@ -71,14 +72,15 @@ const Home = () => {
       </Col>
     </Row> */}
         <Row className="match-height">
-          <Col lg="8" xs="12">
+          <Col lg="12" xs="12">
             {/* <CompanyTable /> */}
-            <CompanyTable2/>
+            {/* <CompanyTable2/> */}
+            <ListTeacherBahrAcavemi/>
           </Col>
-          <Col lg="4" md="6" xs="12">
-            <CardMeetup />
+          {/* <Col lg="4" md="6" xs="12"> */}
+            {/* <CardMeetup /> */}
             {/* <AllListUser/> */}
-          </Col>
+          {/* </Col> */}
           <Col lg="6" xs="12">
             <SupportTracker
               primary={colors.primary.main}

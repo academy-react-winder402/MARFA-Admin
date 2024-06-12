@@ -23,7 +23,7 @@ const CompanyTable = () => {
 
   const getAllCourses = async () => {
     const result = await http.get("/Home/GetCoursesWithPagination?PageNumber=1&RowsOfPage=10&SortingCol=Active&SortType=DESC&TechCount=0");
-    console.log(result);
+    // console.log(result);
     return result;
   };
   const { data, onSuccess , isError, refetch } = useQuery("getAllCourses3", getAllCourses,

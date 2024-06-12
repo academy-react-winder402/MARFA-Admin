@@ -64,7 +64,7 @@ const VerticalForm = () => {
         image: newsData?.detailsNewsDto.currentImageAddress,
       });
     }
-    console.log(newsData?.detailsNewsDto);
+    // console.log(newsData?.detailsNewsDto);
   }, [isSuccess]);
 
   useEffect(() => {
@@ -140,7 +140,7 @@ const VerticalForm = () => {
       });
 
       const res = await instance.post("/News/CreateNews", data);
-      console.log(res);
+      // console.log(res);
       res?.success === true && toast.success("خبر جدید با موفقیت درج شد.")
       res?.errors.forEach((element) => {
         toast.error(element);

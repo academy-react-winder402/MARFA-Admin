@@ -46,6 +46,8 @@ const NewsPage = lazy(() => import('../../../src/pages/NewsPage'));
 const NewsList = lazy(() => import('../../@core/components/NewsALLComponent/NewsList/NewsList'));
 const NewsCreatnew = lazy(() => import('../../@core/components/NewsALLComponent/NewsCreatnew'));
 const NewsCategory = lazy(() => import('../../@core/components/NewsALLComponent/NewsCategory'));
+const NewsChangeEdid = lazy(() => import('../../@core/components/NewsALLComponent/EditNews/NewsChangeEdid.js'));
+const NewsDetaile = lazy(() => import('../../@core/components/NewsALLComponent/NewsDetailComponent/NewsDetaile'));
 const DetailsCourse = lazy(() => import('../../@core/components/componentCourses/CourseListsecondcomponent/DetailsCourse'));
 const EditCourse = lazy(() => import('../../@core/components/componentCourses/CourseListsecondcomponent/EditCourse'));
 
@@ -118,6 +120,15 @@ const Routes = [
     path: "/NewsPage/NewsList",
     element: <NewsList />,
   },
+  {
+    path: "/NewsList/NewsDetaile/:id",
+    element: <NewsDetaile />,
+  },
+  {
+    path: "/NewsDetaile/NewsChangeEdid/:id",
+    element: <NewsChangeEdid />,
+  },
+  
   {
     path: "/NewsPage/NewsCreatnew",
     element: <NewsCreatnew />,

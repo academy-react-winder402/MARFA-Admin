@@ -108,7 +108,7 @@ const formatGroupLabel = (data) => (
 );
 
 const SelectOptions = ({ values }) => {
-  console.log(values);
+  // console.log(values);
   // ** State
   const [query, setQuery] = useState("");
   const [selectedDBVal, setSelectedDBVal] = useState(null);

@@ -77,7 +77,7 @@ for (let i = 0; i < courseLevel?.length; i++) {
     newCourseLevelDtos.push(newObj)   
 }
 const baseLevel = newCourseLevelDtos?.find((item)=>item.label === BaseDetail?.courseLevelName)
-baseLevel && console.log(baseLevel);
+// baseLevel && console.log(baseLevel);
 
 
 const newTeachers = [];

@@ -45,7 +45,7 @@ const Login = () => {
       navigate('/home')
     }
 
-    console.log(res);
+    // console.log(res);
   }
 
   return (

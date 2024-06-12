@@ -2,7 +2,8 @@ import React from "react";
 import {
   Activity,
   Delete,
-  XCircle,  Edit,
+  XCircle,
+  Edit,
   Eye,
   MoreVertical,
   Star,
@@ -30,21 +31,25 @@ import { makeFormData } from "./makeFormData";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
+
 function NewsItem({ data, apiParam, setApiParam, onClick, refetch }) {
   const navigate = useNavigate();
   
-  const onNavigateDetailsPage = (e) => {
+  // const onNavigateDetailsPage = (e) => {
+  //   e.preventDefault();
+  //   navigate("/news/newsDetail/" + data?.id);
+  // };
+  const NewsDetaileFanction = (e) => {
     e.preventDefault();
-    navigate("/news/newsDetail/" + data?.id);
+    navigate("/NewsList/NewsDetaile/" + data?.id);
   };
-  
   const onActiveDeactive = (e) => {
     e.preventDefault();
     const obj = {
       Id: data?.id,
       Active: !apiParam?.IsActive,
     };
-    
+ 
     let newFormData = new FormData()
 
     newFormData = makeFormData(obj);
@@ -53,9 +58,9 @@ function NewsItem({ data, apiParam, setApiParam, onClick, refetch }) {
     refetch();
   };
 
-  const onEdit = (e) => {
+  const NewsChange = (e) => {
     e.preventDefault();
-    navigate("/editNews/" + data?.id);
+    navigate("/NewsDetaile/NewsChangeEdid/" + data?.id);
   };
 
   const deleteNews = useMutation((id) =>
@@ -145,7 +150,15 @@ function NewsItem({ data, apiParam, setApiParam, onClick, refetch }) {
             <MoreVertical size={15} />
           </DropdownToggle >
           <DropdownMenu className="bg-light text-secondary">  
-            <DropdownItem href="/" onClick={(e) => onEdit(e)}>
+            {/* <DropdownItem href="/" onClick={(e) => NewsDetaileFanction(e)}>
+              <Edit className="me-50" size={15} />{" "}
+              <span className="align-middle">جزییات</span>
+            </DropdownItem> */}
+             <DropdownItem href="/" onClick={(e) => NewsDetaileFanction(e)}>
+              <Eye className="me-50" size={15} />{" "}
+              <span className="align-middle">مشاهده</span>
+            </DropdownItem>
+            <DropdownItem href="/" onClick={(e) => NewsChange(e)}>
               <Edit className="me-50" size={15} />{" "}
               <span className="align-middle">ویرایش</span>
             </DropdownItem>
@@ -154,7 +167,7 @@ function NewsItem({ data, apiParam, setApiParam, onClick, refetch }) {
               href="/"
               onClick={(e) => onDelete(e, data?.id)}>
               <XCircle className="me-50" size={15} />{" "}
-              <span className="align-middle">حذف </span>
+              <span className="align-middle">حذف خبر</span>
             </DropdownItem>
           </DropdownMenu>
         </UncontrolledDropdown>

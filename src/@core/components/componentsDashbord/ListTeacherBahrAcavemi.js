@@ -1,5 +1,5 @@
 // ** React Imports
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 // ** Third Party Components
 import { ReactSortable } from 'react-sortablejs'
@@ -10,9 +10,12 @@ import img2 from '@src/assets/images/portrait/small/avatar-s-1.jpg'
 import img3 from '@src/assets/images/portrait/small/avatar-s-2.jpg'
 import img4 from '@src/assets/images/portrait/small/avatar-s-3.jpg'
 import img5 from '@src/assets/images/portrait/small/avatar-s-4.jpg'
+import http from '../../core/services/interceptore';
 
 // ** Reactstrap Imports
 import { Card, CardHeader, CardTitle, CardBody, CardText, ListGroupItem } from 'reactstrap'
+// import { active } from 'sortablejs'
+// import { log } from 'console'
 
 const listItems = [
   {
@@ -49,7 +52,22 @@ const listItems = [
 
 const ListTeacherBahrAcavemi = () => {
   // ** State
-  const [listArr, setListArr] = useState(listItems)
+  const [listArr , setListArr] = useState(listItems)
+
+  // const getTeacher = async()=>{
+  //   const res = await http.get('/Home/GetTeachers')
+  //   console.log(res.data && res.data);
+  //   return res.data
+  // }
+  // useEffect(() => {
+    
+  //   getTeacher()
+  // }, []);
+  
+  
+
+
+
   return (
     <Card>
       <CardHeader>
@@ -60,6 +78,7 @@ const ListTeacherBahrAcavemi = () => {
     آکادمی بحر با اساتید باتجزبه و حرفه ای بهترین در ایران می باشد.
         </CardText>
         <ReactSortable tag='ul' className='list-group' list={listArr} setList={setListArr}>
+          {/* {resizeBy.data.map(item => {return()})} */}
           {listArr.map(item => {
             return (
               <ListGroupItem className='draggable' key={item.name}>

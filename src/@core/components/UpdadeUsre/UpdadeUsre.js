@@ -50,7 +50,7 @@ const UpdadeUsre = () => {
         toast.error(result.errors)       
       }
 
-      console.log(result);
+      // console.log(result);
         
         
     }

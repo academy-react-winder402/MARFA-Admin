@@ -55,7 +55,7 @@ const ShareProjectExample = ({getCourseInfo , courseId , courseGroup , studentId
         studentId: studentId
       }
       const result =await http.post("/CourseReserve/SendReserveToCourse" , reserveObj) 
-      console.log(result);  
+      // console.log(result);  
       if(result.success === true){
         toast.success(result.message)    
       }

@@ -81,7 +81,7 @@ const FormEditCourse = () => {
   });
 
   const { id } = useParams();
-  console.log(id);
+  // console.log(id);
 
   const getCourseInfo = async () => {
     const result = await http.get(`/Course/${id}`);
@@ -89,7 +89,7 @@ const FormEditCourse = () => {
   };
 
   const { data, status } = useQuery(["courseInfo", id], getCourseInfo);
-  console.log(data);
+  // console.log(data);
   // {
   //   status === "success" &&  setCourseEdit(data);
   // }
@@ -99,7 +99,7 @@ const FormEditCourse = () => {
     }
   }, [status, data]);
 
-  console.log(courseEdit);
+  // console.log(courseEdit);
 
   const editCourse = async (values) => {
     const dataForm = new FormData();
@@ -130,7 +130,7 @@ const FormEditCourse = () => {
     keys.forEach((key) => {
       const item = setCourses[key];
       dataForm.append(key, item);
-      console.log(dataForm);
+      // console.log(dataForm);
     });
     const res = await http.put(`/Course/`, dataForm);
     refetch();

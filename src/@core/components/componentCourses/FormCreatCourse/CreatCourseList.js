@@ -119,7 +119,7 @@ const newTeachers = [];
     // console.log(newTeachers);
 }
 
-newTeachers && console.log(newTeachers);
+// newTeachers && console.log(newTeachers);
  
 
 
@@ -138,7 +138,7 @@ newTeachers && console.log(newTeachers);
     if(result.success === true){
       navigate("/DetailCourse/" + result.id)
     }
-    console.log(result);
+    // console.log(result);
   }
   
 

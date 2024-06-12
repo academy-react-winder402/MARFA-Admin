@@ -40,7 +40,7 @@ const AddGroup2 = ({courseId , getCourseInfoX}) => {
 
          getCourseInfoX(courseId)
      
-         console.log(result);
+        //  console.log(result);
     }
 
 

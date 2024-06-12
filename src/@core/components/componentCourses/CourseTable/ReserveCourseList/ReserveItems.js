@@ -31,7 +31,7 @@ const ReserveItem = ({courseName , studentName , studentId , reserverDate , acce
     //  console.log(result2);
      setCourseGroup(result2)
     setShow(true)
-    console.log(result2);
+    // console.log(result2);
   }
 
 

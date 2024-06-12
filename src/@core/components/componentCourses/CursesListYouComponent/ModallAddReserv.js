@@ -34,7 +34,7 @@ const ModallAddReserv = ({setIsOpenAddReserv}) => {
       toast.error(result.errors)       
     }
 
-    console.log(result);
+    // console.log(result);
   }
 
   return (

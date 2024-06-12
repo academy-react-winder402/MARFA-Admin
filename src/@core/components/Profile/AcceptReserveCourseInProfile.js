@@ -69,7 +69,7 @@ const AcceptReserveCourseInProfile = ({getCourseInfoX , courseId , courseGroup ,
 
           refetch2()
 
-          console.log(result);  
+          // console.log(result);  
 
       }
 
@@ -88,7 +88,7 @@ const AcceptReserveCourseInProfile = ({getCourseInfoX , courseId , courseGroup ,
         }   
 
         setShow(false)
-        console.log(result);
+        // console.log(result);
       }
 
 

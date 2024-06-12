@@ -80,7 +80,7 @@ const Table = () => {
   // ** Store Vars
   const dispatch = useDispatch()
   const store = data
-  console.log(store)
+  // console.log(store)
 
   // ** States
   const [plan, setPlan] = useState('')

@@ -1,7 +1,7 @@
 // ** React Imports
 import { useSkin } from "@hooks/useSkin";
 import { Link, useNavigate } from "react-router-dom";
-import http from '../@core/core/services/interceptore'
+import http from '../../@core/core/services/interceptore'
 
 // ** Icons Imports
 import { Facebook, Twitter, Mail, GitHub } from "react-feather";
@@ -28,7 +28,7 @@ import illustrationsDark from "@src/assets/images/pages/login-v2-dark.svg";
 // ** Styles
 import "@styles/react/pages/page-authentication.scss";
 import { Formik } from "formik";
-import { setItem } from "../localStorage/localStorage";
+import { setItem } from "../../localStorage/localStorage";
 import logo from "@src/assets/images/logo/logo3.png";
 
 const Login = () => {

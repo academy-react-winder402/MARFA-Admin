@@ -15,16 +15,12 @@ import {
   CardText,
   CardTitle,
   CardHeader,
-  UncontrolledDropdown ,
-  DropdownToggle,
-  DropdownMenu, 
-  DropdownItem, 
 } from 'reactstrap'
 import {useQuery} from 'react-query'
 import ProjSpinner from '../common/Spinner'
 import { useNavigate } from 'react-router'
 
-const SupportTracker = props => {
+const SupportTrackerUser = props => {
   const navigate = useNavigate()
   // ** get dashboard detials
   const { data: course , status } = useQuery("course", () => {
@@ -85,7 +81,7 @@ const SupportTracker = props => {
   return status == "success" ? (
     <Card>
       <CardHeader className='pb-0'>
-        <CardTitle tag='h4'>آمار دوره های ثبت شده</CardTitle>
+        <CardTitle tag='h4'>آمار کاربران رزرو شده</CardTitle>
         {/* <UncontrolledDropdown className='chart-dropdown'>
           <DropdownToggle color='' className='bg-transparent btn-sm border-0 p-50'>
             Last 7 days
@@ -106,7 +102,7 @@ const SupportTracker = props => {
               {/* {data.totalTicket} */}
               {course?.allReserve}
               </h1>
-            <CardText>کل دوره  رزرو شده</CardText>
+            <CardText>کل دوره‌های رزرو شده</CardText>
           </Col>
           <Col sm='10' className='d-flex justify-content-center'>
             <Chart options={options} series={series} type='radialBar' height={270} id='support-tracker-card' />
@@ -130,4 +126,4 @@ const SupportTracker = props => {
     </Card>
   ) : <ProjSpinner />
 }
-export default SupportTracker
+export default SupportTrackerUser

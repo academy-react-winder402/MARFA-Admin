@@ -3,9 +3,10 @@ import { MoreVertical, Edit, Trash } from 'react-feather'
 import { Table, Badge, UncontrolledDropdown, DropdownMenu, DropdownItem, DropdownToggle } from 'reactstrap'
 import { Button } from 'reactstrap'
 import { useNavigate } from 'react-router-dom';
+import http from '../../../core/services/interceptore'
 
 
-const UserItem = ({id=0 , fName,setIsOpenAddUser, setIsOpenAccessUser , isOpenAccessUser , lNmae , role , gender , profileCompletionPercentage , gmail , phoneNumber}) => {
+const UserItem = ({id=0 , fName,setIsOpenAddUser, setIsOpenAccessUser , isOpenAccessUser , lNmae ,isActive, role , gender , profileCompletionPercentage , gmail , phoneNumber}) => {
   
   const handleIsOpenAccess = () => {
     setIsOpenAddUser(false)
@@ -18,6 +19,21 @@ const UserItem = ({id=0 , fName,setIsOpenAddUser, setIsOpenAccessUser , isOpenAc
     const  goDetail = () =>{
         navigate('/Users/UserDetails/' + id)
     }
+
+    // for activ ...
+    
+  const handleActive = async (values) => {
+    const courseobjAct = {
+      active: isActive === true ? false : true,
+      id: id,
+    };
+    const result = await http.put(
+      `/Course/ActiveAndDeactiveCourse`,
+      courseobjAct
+    );
+    refetch();
+    return result;
+  };
     
   return (
     <tr >
@@ -26,16 +42,19 @@ const UserItem = ({id=0 , fName,setIsOpenAddUser, setIsOpenAccessUser , isOpenAc
                 <span className='align-middle fw-bold'> {fName +' ' + lNmae}</span>
             </div>
         </td>
-        <td>
+        {/* <td>
             <span className='align-middle fw-bold'> {role}</span>
-        </td>
+        </td> */}
         <td>
             <span className='align-middle fw-bold'> {gender === true ? 'مرد' : 'زن'}</span>
         </td>
-
         <td>
-            <span className='align-middle fw-bold'> {profileCompletionPercentage}</span>
+            <span className='align-middle fw-bold'> {id}</span>
         </td>
+        
+        {/* <td>
+            <span className='align-middle fw-bold'> {profileCompletionPercentage}</span>
+        </td> */}
 
         <td>
             <div style={{width:'200px' , height:'30px' , overflow:'hidden'}}>
@@ -48,6 +67,18 @@ const UserItem = ({id=0 , fName,setIsOpenAddUser, setIsOpenAccessUser , isOpenAc
             {phoneNumber}
         </Badge>
         </td>
+        <td className="text-nowrap ">
+        <Button
+          // className={`isActive === true ? text-info : text-danger`}
+          pill
+          color={isActive === true ? "primary" : 'warning'}
+          // text={isActive === true ? "info" : 'danger'}
+         
+          onClick={handleActive}
+        >
+          {isActive === true ? "فعال" : "غیر فعال"}
+        </Button>
+      </td>
         <td >
             {/* <span className='align-middle fw-bold'> {role}</span> */}
             <Button.Ripple onClick={handleIsOpenAccess} color='primary'>دسترسی</Button.Ripple>

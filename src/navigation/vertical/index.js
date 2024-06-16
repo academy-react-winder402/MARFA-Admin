@@ -11,22 +11,7 @@ export default [
     id: "Users",
     title: " کاربران",
     icon: <Users size={20} />,
-    // navLink: "/Users",
-    children: [
-      {
-        id: "ListUsers",
-        title: " لیست کاربران",
-        icon: <Circle size={12} />,
-        navLink: "/UsersList/ListUsers",
-      },
-      {
-        id: "CreateUser",
-        title: "ایجاد کاربر جدید",
-        icon: <Circle size={12} />,
-        navLink: "/UsersList/CreateNewUser",
-      },   
-                       
-    ],   
+    navLink: "/AllUserTab1"
   },
   {
     id: "Curses",

@@ -27,22 +27,24 @@ const TemplateTitle = "%s - Vuexy React Admin Template";
 // ** Default Route
 const DefaultRoute = "/login";
 
-const Home = lazy(() => import("../../pages/Home"));
-const Users = lazy(() => import("../../pages/UsersPage/ListUsers"));
-const Curses = lazy(() => import("../../pages/Curses"));
-const Login = lazy(() => import("../../pages/Login"));
-const Register = lazy(() => import("../../pages/Register"));
-const ForgotPassword = lazy(() => import("../../pages/ForgotPassword"));
-const Error = lazy(() => import("../../pages/Error"));
+const Home = lazy(() => import("../../pages/DashborsHome/Home.js"));
+const Curses = lazy(() => import("../../pages/CoursesPage/Curses.js"));
+const Login = lazy(() => import("../../pages/Login/Login.js"));
+const Register = lazy(() => import("../../pages/RegisterPage/Register.js"));
+const ForgotPassword = lazy(() => import("../../pages/ForgetPassword/ForgotPassword.js"));
+const Error = lazy(() => import("../../pages/ErrorPage/Error.js"));
 const ListCurses = lazy(() => import("../../@core/components/componentCourses/coursespageMain/ListCurses"));
-const ListUsers = lazy(() => import("../../pages/UsersPage/ListUsers"));
-const CreateNewUser = lazy(() => import("../../pages/UsersPage/CreateNewUser"));
+const CreateNewUser = lazy(() => import("../../@core/components/componentUsers/CreateNewUser.js"));
+const AllUserTAb1 = lazy(() => import("../../@core/components/componentUsers/UserAllComponent/AllUserTAp1.js"));
+const AllTeacherTab2 = lazy(() => import("../../@core/components/componentUsers/UserAllComponent/AllTeacherTab2.js"));
+const AllStudentTab3 = lazy(() => import("../../@core/components/componentUsers/UserAllComponent/AllStudentTab3.js"));
+const AllAdminTab4 = lazy(() => import("../../@core/components/componentUsers/UserAllComponent/AllAdminTab4.js"));
 const ListCursesUser = lazy(() => import("../../@core/components/componentCourses/coursespageMain/ListCursesUser"));
 const CreatNewCurses = lazy(() => import("../../@core/components/componentCourses/coursespageMain/CreatNewCurses"));
 const SelectionListCursesUse = lazy(() => import("../../@core/components/componentCourses/coursespageMain/SelectionListCursesUse"));
 const UpdadeUsre = lazy(() => import('../../@core/components/UpdadeUsre/UpdadeUsre'));
 const Profile = lazy(() => import('../../@core/components/Profile'));
-const NewsPage = lazy(() => import('../../../src/pages/NewsPage'));
+const NewsPage = lazy(() => import('../../pages/NewsPage/NewsPage.js'));
 const NewsList = lazy(() => import('../../@core/components/NewsALLComponent/NewsList/NewsList'));
 const NewsCreatnew = lazy(() => import('../../@core/components/NewsALLComponent/NewsCreatnew'));
 const NewsCategory = lazy(() => import('../../@core/components/NewsALLComponent/NewsCategory'));
@@ -63,10 +65,10 @@ const Routes = [
     element: <Home />,
   },
   
-  {
-    path: "/Users",
-    element: <Users />,
-  },
+  // {
+  //   path: "/Users",
+  //   element: <Users />,
+  // },
   {
     path: "/Users/UserDetails/:id",
     element: <Profile/>
@@ -75,10 +77,31 @@ const Routes = [
     path: '/Users/UserDetails/:id',
     element: <UpdadeUsre/>,
   },
+  // {
+  //   path: "/UsersList/ListUsers",
+  //   element: <ListUsers/>,
+  // },
+  
+
+  //start AllUser
   {
-    path: "/UsersList/ListUsers",
-    element: <ListUsers/>,
+    path: "/AllAdminTab4",
+    element: <AllAdminTab4/>,
   },
+  {
+    path: "/AllUserTab1",
+    element: <AllUserTAb1/>,
+  },
+  {
+    path: "/AllTeacherTab2",
+    element: <AllTeacherTab2/>,
+  },
+  {
+    path: "/AllStudentTab3",
+    element: <AllStudentTab3/>,
+  },
+
+  // end user page
   {
     path: "UsersList/CreateNewUser",
     element: <CreateNewUser />,

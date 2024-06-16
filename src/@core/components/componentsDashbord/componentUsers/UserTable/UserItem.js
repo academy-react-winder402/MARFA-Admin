@@ -26,9 +26,7 @@ const UserItem = ({id=0 , fName,setIsOpenAddUser, setIsOpenAccessUser , isOpenAc
                 <span className='align-middle fw-bold'> {fName +' ' + lNmae}</span>
             </div>
         </td>
-        <td>
-            <span className='align-middle fw-bold'> {role}</span>
-        </td>
+
         <td>
             <span className='align-middle fw-bold'> {gender === true ? 'مرد' : 'زن'}</span>
         </td>

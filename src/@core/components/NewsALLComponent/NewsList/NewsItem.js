@@ -155,19 +155,19 @@ function NewsItem({ data, apiParam, setApiParam, onClick, refetch }) {
               <span className="align-middle">جزییات</span>
             </DropdownItem> */}
              <DropdownItem href="/" onClick={(e) => NewsDetaileFanction(e)}>
-              <Eye className="me-50" size={15} />{" "}
-              <span className="align-middle">مشاهده</span>
+              <Eye className="me-50 text-primary" size={15} />{" "}
+              <span className="align-middle text-primary">مشاهده</span>
             </DropdownItem>
             <DropdownItem href="/" onClick={(e) => NewsChange(e)}>
-              <Edit className="me-50" size={15} />{" "}
-              <span className="align-middle">ویرایش</span>
+              <Edit className="me-50 text-warning" size={15} />{" "}
+              <span className="align-middle text-warning">ویرایش</span>
             </DropdownItem>
             <DropdownItem
               className="text-danger"
               href="/"
               onClick={(e) => onDelete(e, data?.id)}>
               <XCircle className="me-50" size={15} />{" "}
-              <span className="align-middle">حذف خبر</span>
+              <span className="align-middle">حذف </span>
             </DropdownItem>
           </DropdownMenu>
         </UncontrolledDropdown>

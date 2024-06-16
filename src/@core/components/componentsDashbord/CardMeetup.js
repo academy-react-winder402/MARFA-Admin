@@ -9,14 +9,14 @@ import { Calendar, MapPin } from 'react-feather'
 import { Card, CardTitle, CardBody, CardText } from 'reactstrap'
 
 // ** Images Imports
-import illustration from '@src/assets/images/pic/28.jpg'
+import illustration from '@src/assets/images/icons/social/meet7.png'
 
 // ** Avatar Imports
-import avatar9 from '@src/assets/images/portrait/small/avatar-s-9.jpg'
-import avatar6 from '@src/assets/images/portrait/small/avatar-s-6.jpg'
-import avatar8 from '@src/assets/images/portrait/small/avatar-s-8.jpg'
-import avatar7 from '@src/assets/images/portrait/small/avatar-s-7.jpg'
-import avatar20 from '@src/assets/images/portrait/small/avatar-s-20.jpg'
+import avatar9 from '../../../assets/images/pic/Ob.jpg'
+import avatar6 from '../../../assets/images/pic/ma.jpg'
+import avatar8 from '../../../assets/images/pic/ma.jpg'
+import avatar7 from '../../../assets/images/pic/mm.jpg'
+import avatar20 from '../../../assets/images/pic/as.jpg'
 
 const CardMeetup = () => {
   const data = [
@@ -65,7 +65,7 @@ const CardMeetup = () => {
       <div className='meetup-img-wrapper rounded-top text-center'>
         <img src={illustration} height='170' />
       </div>
-      <CardBody>
+      <CardBody className=' p-5 mx-auto w-100'>
         <div className='meetup-header d-flex align-items-center'>
           <div className='meetup-day'>
             <h6 className='mb-0'>شنبه</h6>
@@ -75,12 +75,12 @@ const CardMeetup = () => {
             <CardTitle tag='h4' className='mb-25'>
              ملاقات با اساتید
             </CardTitle>
-            <CardText className='mb-0'>ملاقات با بهترین اساتید  کشور</CardText>
+            {/* <CardText className='mb-0'>ملاقات با بهترین اساتید  کشور</CardText> */}
           </div>
         </div>
         <div className='d-flex'>
           <Avatar color='light-primary' className='rounded me-1' icon={<Calendar size={18} />} />
-          <div>
+          <div >
             <h6 className='mb-0'>20/03/1403</h6>
             <small>12:ظهر -- 9:صبح</small>
           </div>

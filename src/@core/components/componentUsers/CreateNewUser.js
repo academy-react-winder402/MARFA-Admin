@@ -1,5 +1,5 @@
 import React from 'react'
-import Table from  '../../@core/components/componentCourses/roles/Table'
+import Table from  '../componentCourses/roles/Table'
 const CreateNewUser = () => {
   return (
     <div>

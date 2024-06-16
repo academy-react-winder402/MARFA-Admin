@@ -3,23 +3,34 @@ import { AlignJustify, Rss, Info, Image, Users, Edit } from 'react-feather'
 import {Card, CardImg, Badge, Table, Input , Button } from 'reactstrap'
 import UserItem from './UserItem'
 import {useQuery} from 'react-query'
-import http from '../../../core/services/interceptore'
+import http from '../../../core/services/interceptore';
 import { Row, Col } from 'reactstrap'
-import StatsHorizontal from "../../widgets/stats/StatsHorizontal";
 import Breadcrumbs from "@components/breadcrumbs";
-import { User, UserPlus,Plus, UserCheck, UserX } from 'react-feather'
-
-// import StatsVertical from '../../../components/StatsVertical/StatsVertical'
+// import StatsVertical from '../StatsVertical/StatsVertical'
 // import Earnings from '../Earnings/Earnings'
-import MyNavbar from './MyNavbar'
+import MyNavbar from '../UserTable/MyNavbar'
 import StatsCard from '../../componentsDashbord/StatsCard'
+import { User, UserPlus,Plus, UserCheck, UserX } from 'react-feather'
+import StatsHorizontal from "../../widgets/stats/StatsHorizontal";
+import ModallAddUserNew from './ModallAddUserNew'
+import ModalaccessUser from './ModalaccessUser'
 
-const AllUsers = () => {
 
-    const [isOpen, setIsOpen] = useState(false)
+const AllUserTAp1 = () => {
+    const [isOpenAddUser, setIsOpenAddUser] = useState(false)
+    const [isOpenAccessUser, setIsOpenAccessUser] = useState(false)
     const [search, setSearch] = useState("");
-
+  
     const ref = useRef();
+    const handleIsOpenUser = () => {
+      setIsOpenAddUser(!isOpenAddUser)
+      setIsOpenAccessUser(false)
+    }
+
+    // const [isOpen, setIsOpen] = useState(false)
+    // const [search, setSearch] = useState("");
+
+    // const ref = useRef();
 
     const handleSearch = (e) => {
       clearTimeout(ref.current)
@@ -33,12 +44,17 @@ const AllUsers = () => {
   
       ref.current = timeOut
      
-    };
+    } 
 
+
+
+ const addUser = isOpenAddUser ? `d-block` : `hidden`
+  const accessUser = isOpenAccessUser ? `d-block` : `hidden`
 
 
     const getAlls =async () =>{
-      const result = await http.get(`/User/UserMannage?PageNumber=1&RowsOfPage=200&SortingCol=DESC&SortType=InsertDate&Query=${search}`)
+      const result = await http.get(`/User/UserMannage?PageNumber=1&RowsOfPage=100&SortingCol=DESC&SortType=InsertDate&Query=${search}&IsActiveUser=true&IsDeletedUser=true&roleId=2`)
+        //  const result = await http.get(`/User/UserMannage?PageNumber=0&RowsOfPage=0&SortingCol=DESC&SortType=InsertDate&Query=${search}&IsActiveUser=true&IsDeletedUser=true&roleId`)
       return result
     }
   
@@ -62,8 +78,8 @@ const AllUsers = () => {
     const wemenCount = (mens && (data.listUser.length - mens.length)/data.listUser.length)*100;
 
     return (
-        <div>
-          {/* top page */}
+        <>
+         <div>
           <div style={{fontSize:'30px'}}> 
                 {/* <Badge color='success'> جدول کاربران </Badge>    */}
                 <Breadcrumbs title='کاربران مارفا' data={[{ title: 'لیست کاربران' }]} />
@@ -97,10 +113,10 @@ const AllUsers = () => {
                 <div className="d-flex justify-content-end  mt-md-0 mt-1">
                     <Button
                       className="ms-2"
-                      // tag={Link} to='./userAdd/add'
+                    //   tag={Link} to='./userAdd/add'
                       color="primary"
                       icon={<UserX size={20} />}
-                      // onClick={handleIsOpenUser}
+                      onClick={handleIsOpenUser}
                       >
                       <span className="align-middle  me-50">اضافه کاربر جدید</span>
                       <User size={35} />
@@ -112,27 +128,20 @@ const AllUsers = () => {
                 </div>
               </Col>
             </Row>
-            {/* <Row>
+            <Row>
             <div className={`position-absolute rounded top-25 z-50 w-25 bg-light  start-50 translate-middle ${addUser}`}>
              <ModallAddUserNew setIsOpenAddUser={setIsOpenAddUser}/>
-            </div> */}
+            </div>
             {/* modal access */}
-            {/* <div className={`bg-info position-absolute rounded top-25 z-50 w-25 bg-light  start-50 translate-middle ${accessUser}`}>
+            <div className={`bg-info position-absolute rounded top-25 z-50 w-25 bg-light  start-50 translate-middle ${accessUser}`}>
              <ModalaccessUser setIsOpenAccessUser={setIsOpenAccessUser} />
     
             </div>
-            </Row> */}
-
-          {/* end top page  */}
-
-        {/* <div style={{fontSize:'30px'}}> 
-            <Badge color='success'> تمام کاربران </Badge>   
-        </div> */}
-
-{/* search   $ namayesh */}
-          {/* <Input onChange={handleSearch}  type='text' placeholder='search' /> */}
-
-          <div className='invoice-list-table-header w-100 me-1 ms-50 mt-2 mb-75'>
+            </Row>
+            {/* <Input onChange={handleSearch}  type='text' placeholder='search' /> */}
+            {/* search ... */}
+           <div  className=''>
+           <div className='invoice-list-table-header w-100 me-1 ms-50 mt-2 mb-75'>
             <Row>
             <Col xl='6' className='d-flex align-items-center p-0'>
               <div className='d-flex align-items-center w-100'>
@@ -169,44 +178,48 @@ const AllUsers = () => {
                   onChange={e => handleSearch(e.target.value)}
                 />
               </div>
-              </Col>
+            
+            </Col>
           </Row>
             </div>
-          <Table responsive className="mt-3 table-hover dark-layout table table-bordered ">
-            <thead className='align-middle fw-bold  m-5'>
-              <tr style={{height:'50px',  paddingTop:'5px'}}>
-                <th>نام</th>
-                <th>نوع کاربر</th>
-                <th>جنسیت</th>
-                <th> کد استاد</th>
-                {/* <th>درصد تکمیل اطلاعات</th> */}
-                <th>ایمیل</th>              
-                <th>شماره تماس</th>
-                <th> دسترسی</th>
+            <Table responsive className="mt-3 table-hover dark-layout table table-bordered ">
+              <thead  className='align-middle fw-bold  m-5'> 
+                <tr  style={{height:'50px',  paddingTop:'5px'}}>
+                  <th>نام</th>
+                  {/* <th >نقش کاربر</th> */}
+                  <th>جنسیت</th>
+                  <th className="text-nowrap "> کد استاد</th>
+                  <th>ایمیل</th>              
+                  <th>شماره تماس</th>
+                  <th className="text-nowrap">وضعیت </th>
+                  <th> دسترسی</th>
                   <th>  جزییات </th>
                   <th>حدف/ویرایش  </th>
-              </tr>
-            </thead>
-            <tbody>
-              {data && (
-                  data.listUser?.map((item , index) =>{
-                            return(
-                              <UserItem key={index} id={item.id} fName={item.fname} lNmae={item.lname} role='عادی' gender={item.gender}
-                              profileCompletionPercentage={item.profileCompletionPercentage} gmail={item.gmail} phoneNumber={item.phoneNumber}/>         
-                        )
-                    })         
-                  )
-                } 
-
-
-
-
-
-            </tbody>
-          </Table>       
+    
+                </tr>
+              </thead>
+              <tbody>
+                {data && (
+                    data?.listUser.map((item , index) =>{
+                              return(
+                                <UserItem setIsOpenAddUser={setIsOpenAddUser} setIsOpenAccessUser={setIsOpenAccessUser} isOpenAccessUser={isOpenAccessUser} key={index} id={item.id} fName={item.fname} lNmae={item.lname} role='استاد' gender={item.gender}
+                                profileCompletionPercentage={item.profileCompletionPercentage} gmail={item.gmail} phoneNumber={item.phoneNumber}/>         
+                          )
+                      })         
+                    )
+                  } 
+    
+              </tbody>
+          
+          
+    
+            </Table> 
+           </div>
         </div>
-
-      )
-}
-
-export default AllUsers
+                 
+           
+        </>   
+          )
+   }
+          
+export default AllUserTAp1

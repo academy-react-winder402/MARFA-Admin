@@ -5,11 +5,11 @@ import { useEffect, useState } from 'react'
 import { ReactSortable } from 'react-sortablejs'
 
 // ** Images
-import img1 from '@src/assets/images/portrait/small/avatar-s-12.jpg'
-import img2 from '@src/assets/images/portrait/small/avatar-s-1.jpg'
-import img3 from '@src/assets/images/portrait/small/avatar-s-2.jpg'
-import img4 from '@src/assets/images/portrait/small/avatar-s-3.jpg'
-import img5 from '@src/assets/images/portrait/small/avatar-s-4.jpg'
+import img1 from '../../../assets/images/pic/Ob.jpg'
+import img2 from '../../../assets/images/pic/ma.jpg'
+import img3 from '../../../assets/images/pic/mo.jpg'
+import img4 from '../../../assets/images/pic/mm.jpg'
+import img5 from '../../../assets/images/pic/as.jpg'
 import http from '../../core/services/interceptore';
 
 // ** Reactstrap Imports
@@ -69,13 +69,13 @@ const ListTeacherBahrAcavemi = () => {
 
 
   return (
-    <Card>
+    <Card className=' p-2'>
       <CardHeader>
-        <CardTitle tag='h4'>لیست اساتید آکادمی بحر</CardTitle>
+        <CardTitle className='bg-light-primary text-center mx-auto  p-2' tag='h4'>لیست اساتید آکادمی بحر</CardTitle>
       </CardHeader>
       <CardBody>
-        <CardText>
-    آکادمی بحر با اساتید باتجزبه و حرفه ای بهترین در ایران می باشد.
+        <CardText className=' text-center'>
+  آکادمی بحر با اساتید باتجزبه و حرفه ای بهترین در ایران..
         </CardText>
         <ReactSortable tag='ul' className='list-group' list={listArr} setList={setListArr}>
           {/* {resizeBy.data.map(item => {return()})} */}

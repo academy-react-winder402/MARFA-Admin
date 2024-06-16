@@ -52,14 +52,14 @@ const BreadCrumbs = (props) => {
         <div className="row breadcrumbs-top">
           <div className="col-12">
             {title ? (
-              <h2 className="content-header-title float-start mb-0">{title}</h2>
+              <h2 className="content-header-title float-start mb-0"> {title}</h2>
             ) : (
               ""
             )}
             <div className="breadcrumb-wrapper vs-breadcrumbs d-sm-block d-none col-12">
               <Breadcrumb>
                 <BreadcrumbItem tag="li">
-                  <Link to="/">Home</Link>
+                  <Link to="/">داشبورد</Link>
                 </BreadcrumbItem>
                 {renderBreadCrumbs()}
               </Breadcrumb>

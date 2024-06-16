@@ -11,9 +11,9 @@ import AvatarGroup from "@components/avatar-group";
 import { Row, Col, Card, CardHeader, CardTitle, CardBody } from "reactstrap";
 
 // ** Context
-import CardBrowserState from "../@core/components/componentsDashbord/CardBrowserState";
+// import CardBrowserState from "../@core/components/componentsDashbord/CardBrowserState";
 // import {ThemeColors } from '../views/AllUse/ThemeColors'
-import { ThemeColors } from "../../src/utility/context/ThemeColors";
+import { ThemeColors } from "../../utility/context/ThemeColors";
 
 // ** Utils
 import { kFormatter } from "@utils";
@@ -25,14 +25,15 @@ import "@styles/base/pages/dashboard-ecommerce.scss";
 
 
 // ** Demo Components
-import CardMedal from "../@core/components/componentsDashbord/CardMedal";
-import StatsCard from "../@core/components/componentsDashbord/StatsCard";
-import CardMeetup from "../@core/components/componentsDashbord/CardMeetup";
-import CompanyTable from "../@core/components/componentsDashbord/CompanyTable";
-import CompanyTable2 from "../@core/components/componentsDashbord/CompanyTable2";
-import SupportTracker from "../@core/components/componentsDashbord/SupportTracker";
-import AllListUser from "../../src/@core/components/componentsDashbord/AllListUser";
-import ListTeacherBahrAcavemi from "../@core/components/componentsDashbord/ListTeacherBahrAcavemi";
+import CardMedal from "../../@core/components/componentsDashbord/CardMedal";
+import StatsCard from "../../@core/components/componentsDashbord/StatsCard";
+import CardMeetup from "../../@core/components/componentsDashbord/CardMeetup";
+import CompanyTable from "../../@core/components/componentsDashbord/CompanyTable";
+import CompanyTable2 from "../../@core/components/componentsDashbord/CompanyTable2";
+import SupportTracker from "../../@core/components/componentsDashbord/SupportTracker";
+import AllListUser from "../../@core/components/componentsDashbord/AllListUser";
+import ListTeacherBahrAcavemi from "../../@core/components/componentsDashbord/ListTeacherBahrAcavemi";
+import SupportTrackerUser from "../../@core/components/componentsDashbord/SupportTrackerUser";
 // import SupportTracker from './componentsDashbord/SupportTracker'
 
 const Home = () => {
@@ -72,17 +73,17 @@ const Home = () => {
       </Col>
     </Row> */}
         <Row className="match-height">
-          <Col lg="12" xs="12">
+          <Col lg="6" xs="12">
             {/* <CompanyTable /> */}
             {/* <CompanyTable2/> */}
             <ListTeacherBahrAcavemi/>
           </Col>
-          {/* <Col lg="4" md="6" xs="12"> */}
-            {/* <CardMeetup /> */}
+          <Col lg="6" md="6" xs="12">
+            <CardMeetup />
             {/* <AllListUser/> */}
-          {/* </Col> */}
+          </Col>
           <Col lg="6" xs="12">
-            <SupportTracker
+            <SupportTrackerUser
               primary={colors.primary.main}
               danger={colors.danger.main}
             />
@@ -93,18 +94,7 @@ const Home = () => {
               danger={colors.danger.main}
             />
           </Col>
-          {/* <Col lg='4' md='6' xs='12'>
-        <GoalOverview success={colors.success.main} />
-      </Col> */}
-          {/* <Col lg='4' md='6' xs='12'>
-        <CardTransactions />
-      </Col> */}
-          {/* <Col lg='6' xs='12'>
-          <SupportTracker primary={colors.primary.main} danger={colors.danger.main} />
-        </Col> */}
-          {/* <Col lg='6' xs='12'>
-          <SupportTracker primary={colors.primary.main} danger={colors.danger.main} />
-        </Col> */}
+
         </Row>
       
       </div>

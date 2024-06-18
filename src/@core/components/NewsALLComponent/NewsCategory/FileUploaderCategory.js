@@ -1,20 +1,19 @@
 // ** React Imports
 import { useState, Fragment } from 'react'
-import { ArrowLeft, ArrowRight } from 'react-feather'
+
 // ** Reactstrap Imports
 import { Card, CardHeader, CardTitle, CardBody, Button, ListGroup, ListGroupItem } from 'reactstrap'
-import '@styles/react/libs/react-select/_react-select.scss'
-import { selectThemeColors } from '@utils'
+
 // ** Third Party Imports
 import { useDropzone } from 'react-dropzone'
 import { FileText, X, DownloadCloud } from 'react-feather'
 
-const FilePicCourseEdit = ({ stepper}) => {
+const FileUploaderCategory = () => {
   // ** State
   const [files, setFiles] = useState([])
-  
 
   const { getRootProps, getInputProps } = useDropzone({
+    multiple: false,
     onDrop: acceptedFiles => {
       setFiles([...files, ...acceptedFiles.map(file => Object.assign(file))])
     }
@@ -57,30 +56,27 @@ const FilePicCourseEdit = ({ stepper}) => {
     </ListGroupItem>
   ))
 
-  const handleRemoveAllFiles = ({stepper}) => {
+  const handleRemoveAllFiles = () => {
     setFiles([])
   }
 
   return (
-    <div>
-
-   
-    <Card>
+    <Card className='border border-secondary'>
       <CardHeader>
-        <CardTitle tag='h4'>عکس دوره را وارد کنید.</CardTitle>
+        <CardTitle tag='h4'>تصویر دسته بندی </CardTitle>
       </CardHeader>
       <CardBody>
         <div {...getRootProps({ className: 'dropzone' })}>
           <input {...getInputProps()} />
           <div className='d-flex align-items-center justify-content-center flex-column'>
             <DownloadCloud size={64} />
-            <h5>عکس دوره را اینجا وارد کنید</h5>
+            <h5>برای وارد کردن تصویر کلیک کنید </h5>
             <p className='text-secondary'>
-          فایل را بکشید یاروی{' '}
+              فایل را به اینجا بکشید یا روی{' '}
               <a href='/' onClick={e => e.preventDefault()}>
-                مرورگر
+               مرورگر
               </a>{' '}
-              کلیک کنید
+              کلیک کنید.
             </p>
           </div>
         </div>
@@ -89,26 +85,15 @@ const FilePicCourseEdit = ({ stepper}) => {
             <ListGroup className='my-2'>{fileList}</ListGroup>
             <div className='d-flex justify-content-end'>
               <Button className='me-1' color='danger' outline onClick={handleRemoveAllFiles}>
-              حدف همه
+                حذف
               </Button>
-              {/* <Button color='primary'>Upload Files</Button> */}
+              {/* <Button color='primary'>آپلود فایل</Button> */}
             </div>
           </Fragment>
         ) : null}
       </CardBody>
     </Card>
-      <div className='d-flex justify-content-between'>
-      <Button color='primary' className='btn-prev' outline disabled>
-        <ArrowLeft size={14} className='align-middle me-sm-25 me-0'></ArrowLeft>
-        <span className='align-middle d-sm-inline-block d-none'>قبل</span>
-      </Button>
-      <Button color='primary' className='btn-next' onClick={() => stepper.next()}>
-        <span className='align-middle d-sm-inline-block d-none'>بعد</span>
-        <ArrowRight size={14} className='align-middle ms-sm-25 ms-0'></ArrowRight>
-      </Button>
-    </div>
-     </div>
   )
 }
 
-export default FilePicCourseEdit
+export default FileUploaderCategory

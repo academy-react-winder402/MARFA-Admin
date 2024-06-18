@@ -14,22 +14,13 @@ import { User, UserPlus,Plus, UserCheck, UserX } from 'react-feather'
 import StatsHorizontal from "../../widgets/stats/StatsHorizontal";
 import ModallAddUserNew from './ModallAddUserNew'
 import ModalaccessUser from './ModalaccessUser'
+import EditUserExample from './ModalEditUser'
 
 
 const AllUserTAp1 = () => {
     const [isOpenAddUser, setIsOpenAddUser] = useState(false)
     const [isOpenAccessUser, setIsOpenAccessUser] = useState(false)
     const [search, setSearch] = useState("");
-
-// ********************FOR ACTIVE TAB***********************
-
-
-
-
-
-
-
-// *******************************************
   
     const ref = useRef();
     const handleIsOpenUser = () => {
@@ -63,7 +54,7 @@ const AllUserTAp1 = () => {
 
 
     const getAlls =async () =>{
-      const result = await http.get(`/User/UserMannage?PageNumber=1&RowsOfPage=200&SortingCol=DESC&SortType=InsertDate&Query=${search}`)
+      const result = await http.get(`/User/UserMannage?PageNumber=1&RowsOfPage=200&SortingCol=DESC&SortType=InsertDate&Query=${search}&IsActiveUser=true&IsDeletedUser=true&roleId=3`)
         //  const result = await http.get(`/User/UserMannage?PageNumber=0&RowsOfPage=0&SortingCol=DESC&SortType=InsertDate&Query=${search}&IsActiveUser=true&IsDeletedUser=true&roleId`)
       return result
     }
@@ -97,8 +88,8 @@ const AllUserTAp1 = () => {
            
             <Row className="match-height d-flex  align-items-center  ">
               
-                <Col  xl="12" md="6" xs="12">
-                  <StatsCard  cols={{ xl: "3", sm: "6" }} />    
+                <Col xl="12" md="6" xs="12">
+                  <StatsCard cols={{ xl: "3", sm: "6" }} />    
                 </Col>
             
             
@@ -121,33 +112,14 @@ const AllUserTAp1 = () => {
               </Col>
               <Col lg='6' sm='6'>
                 <div className="d-flex justify-content-end  mt-md-0 mt-1">
-                    <Button
-                      className="ms-2"
-                      // tag={Link} to='./userAdd/add'
-                      color="primary"
-                      icon={<UserX size={20} />}
-                      onClick={handleIsOpenUser}
-                      >
-                      <span className="align-middle  me-50">اضافه کاربر جدید</span>
-                      <User size={35} />
-                      <Plus size={15} />
-                      
-                    </Button>
-                    
-            
+                 <EditUserExample setIsOpenAddUser={setIsOpenAddUser}/>
+               
                 </div>
               </Col>
             </Row>
-            <Row>
-            <div className={`position-absolute rounded top-25 z-50 w-25 bg-light  start-50 translate-middle ${addUser}`}>
-             <ModallAddUserNew setIsOpenAddUser={setIsOpenAddUser}/>
-            </div>
-            {/* modal access */}
-            <div className={`bg-info position-absolute rounded top-25 z-50 w-25 bg-light  start-50 translate-middle ${accessUser}`}>
-             <ModalaccessUser setIsOpenAccessUser={setIsOpenAccessUser} />
-    
-            </div>
-            </Row>
+         
+
+
             {/* <Input onChange={handleSearch}  type='text' placeholder='search' /> */}
             {/* search ... */}
            <div  className=''>
@@ -198,13 +170,13 @@ const AllUserTAp1 = () => {
                   <th>نام</th>
                   {/* <th >نقش کاربر</th> */}
                   <th>جنسیت</th>
-                  <th className="text-nowrap"> کد کاربری</th>
+                  <th className="text-nowrap "> کد دانشجو</th>
                   <th>ایمیل</th>              
                   <th>شماره تماس</th>
-                  <th className="text-nowrap">وضعیت </th>
+                  <th className="text-nowrap ">وضعیت </th>
                   <th> دسترسی</th>
                   <th>  جزییات </th>
-                  <th>حدف/ویرایش  </th>
+                  <th className="text-nowrap">حدف/ویرایش  </th>
     
                 </tr>
               </thead>
@@ -212,8 +184,7 @@ const AllUserTAp1 = () => {
                 {data && (
                     data?.listUser.map((item , index) =>{
                               return(
-                                <UserItem setIsOpenAddUser={setIsOpenAddUser} setIsOpenAccessUser={setIsOpenAccessUser} isOpenAccessUser={isOpenAccessUser} key={index} id={item.id} 
-                                fName={item.fname} lNmae={item.lname} role='همه کاربران' gender={item.gender}
+                                <UserItem setIsOpenAddUser={setIsOpenAddUser} setIsOpenAccessUser={setIsOpenAccessUser} isOpenAccessUser={isOpenAccessUser} key={index} id={item.id} fName={item.fname} lNmae={item.lname} role='دانشجو' gender={item.gender}
                                 profileCompletionPercentage={item.profileCompletionPercentage} gmail={item.gmail} phoneNumber={item.phoneNumber}/>         
                           )
                       })         

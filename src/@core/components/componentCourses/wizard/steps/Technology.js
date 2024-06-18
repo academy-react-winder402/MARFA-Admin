@@ -4,11 +4,29 @@ import Select from 'react-select'
 import { selectThemeColors } from '@utils'
 // ** Icons Imports
 import { ArrowLeft } from 'react-feather'
+import http from '../../../../core/services/interceptore'
+import toast from "react-hot-toast";
+
 
 // ** Reactstrap Imports
 import { Label, Row, Col, Form, Input, Button } from 'reactstrap'
+import { Formik } from 'formik'
 
-const Technology = ({ stepper, type }) => {
+const Technology = ({ stepper, type , CreatCourseValues , setCreatCourseValues }) => {
+
+  const endStep = async(values) =>{
+    
+    console.log(values);
+    // setCreatCourseValues (old => ({...old , ...values})  )
+    // const res = await http.post("/Course", values)
+    // res.success === true && toast.success("کامنت با موفقیت درج شد");
+    //   res.error === true &&
+    //     toast.error("خطایی پیش آمده لطفا مجددا تلاش نمایید" + res.message);
+
+
+    // console.log(CreatCourseValues)
+  }
+
   const  TechnologyOptions = [
     { value: 'Front-End', label: 'Front-End' },
     { value: 'Backend', label: 'Backend' },
@@ -20,25 +38,25 @@ const Technology = ({ stepper, type }) => {
         <h5 className='mb-0'>تکنولوژی دوره</h5>
         {/* <small>Enter Your Social Links.</small> */}
       </div>
-      <Form onSubmit={e => e.preventDefault()}>
-        <Row>
+      <Formik initialValues={{Title:'' }} onSubmit={endStep}>
+        {({values , handleSubmit , handleChange})=>(
+      <Form onSubmit={handleSubmit}>
+        {/* <Row>
           <Col md='6' className='mb-1'>
             <Label className='form-label' for={`twitter-${type}`}>
               Twitter
             </Label>
-            <Input type='text' id={`twitter-${type}`} name='twitter' placeholder='https://twitter.com/abc' />
+            <Input type='text' onChange={handleChange} value={values.Capacity} id={`twitter-${type}`} name='twitter' placeholder='https://twitter.com/abc' />
           </Col>
          
           <Col md='6' className='mb-1'>
             <Label className='form-label' for={`linkedin-${type}`}>
               Linkedin
             </Label>
-            <Input type='text' id={`linkedin-${type}`} name='linkedin' placeholder='https://linkedin.com/abc' />
+            <Input type='text' id={`linkedin-${type}`} value={values.Capacity} onChange={handleChange} name='linkedin' placeholder='https://linkedin.com/abc' />
           </Col>
-        </Row>
+        </Row> */}
         <Row>
-        
-          
           <Row>
           <Col md='6' className='mb-1'>
             <Label className='form-label' for={`Technology-${type}`}>
@@ -52,6 +70,8 @@ const Technology = ({ stepper, type }) => {
               classNamePrefix='select'
               options={TechnologyOptions}
               defaultValue={TechnologyOptions[0]}
+              // onChange={handleChange}
+              // value={target.value}
             />
             </Col>
         </Row>
@@ -61,11 +81,15 @@ const Technology = ({ stepper, type }) => {
             <ArrowLeft size={14} className='align-middle me-sm-25 me-0'></ArrowLeft>
             <span className='align-middle d-sm-inline-block d-none'> قبل</span>
           </Button>
-          <Button color='success' className='btn-submit' onClick={() => alert('دوره با موفقیت ایجاد شد.')}>
+          <Button color='success' className='btn-submit' type='submit' 
+          // onClick={() => alert('دوره با موفقیت ایجاد شد.')}
+          >
             ایجاد دوره
           </Button>
         </div>
       </Form>
+        )}
+        </Formik>
     </Fragment>
     
   )

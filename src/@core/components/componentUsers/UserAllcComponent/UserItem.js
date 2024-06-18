@@ -4,9 +4,24 @@ import { Table, Badge, UncontrolledDropdown, DropdownMenu, DropdownItem, Dropdow
 import { Button } from 'reactstrap'
 import { useNavigate } from 'react-router-dom';
 import http from '../../../core/services/interceptore'
+import ModalAccesUser from './ModalAccesUser';
 
 
-const UserItem = ({id=0 , fName,setIsOpenAddUser, setIsOpenAccessUser , isOpenAccessUser , lNmae ,isActive, role , gender , profileCompletionPercentage , gmail , phoneNumber}) => {
+const UserItem = ({
+  id,
+   fName,
+   setIsOpenAddUser, 
+   setIsOpenAccessUser ,
+    isOpenAccessUser ,
+    refetch, 
+    lNmae ,
+    active,
+  isdelete,
+   role ,
+    gender 
+    , profileCompletionPercentage , 
+    gmail , 
+    phoneNumber}) => {
   
   const handleIsOpenAccess = () => {
     setIsOpenAddUser(false)
@@ -19,21 +34,41 @@ const UserItem = ({id=0 , fName,setIsOpenAddUser, setIsOpenAccessUser , isOpenAc
     const  goDetail = () =>{
         navigate('/Users/UserDetails/' + id)
     }
+    const  goEditUser = () =>{
+      navigate('/UserEditDetails/' + id )
+    }
 
     // for activ ...
     
-  const handleActive = async (values) => {
-    const courseobjAct = {
-      active: isActive === true ? false : true,
-      id: id,
+ 
+    const handleDelete = async (x) => {
+      const obj = {
+        active: isdelete === true ? false : true,
+        id: id,   
+      }
+  
+   
+      const result = await http.delete(`/User/DeleteUser`, {
+        data: obj,
+      });
+      refetch();
+        //  console.log(result); 
     };
-    const result = await http.put(
-      `/Course/ActiveAndDeactiveCourse`,
-      courseobjAct
-    );
-    refetch();
-    return result;
-  };
+  
+  
+  
+    const handleActive = async (values) => {
+      const courseobjAct = {
+        active: active === true ? false : true,
+        id: id,
+      };
+      const result = await http.put(
+        `/User/ReverseToActiveUser`,
+        courseobjAct
+      );
+      refetch();
+      return result;
+    };
     
   return (
     <tr >
@@ -69,19 +104,35 @@ const UserItem = ({id=0 , fName,setIsOpenAddUser, setIsOpenAccessUser , isOpenAc
         </td>
         <td className="text-nowrap ">
         <Button
-          // className={`isActive === true ? text-info : text-danger`}
+          // className={`active === true ? text-info : text-danger`}
           pill
-          color={isActive === true ? "primary" : 'warning'}
-          // text={isActive === true ? "info" : 'danger'}
+          color={active === true ? "primary" : 'warning'}
+          // text={active === true ? "info" : 'danger'}
          
           onClick={handleActive}
         >
-          {isActive === true ? "فعال" : "غیر فعال"}
+          {active === true ? "فعال" : "غیر فعال"}
         </Button>
       </td>
-        <td >
+        <td className="text-nowrap  ">
             {/* <span className='align-middle fw-bold'> {role}</span> */}
-            <Button.Ripple onClick={handleIsOpenAccess} color='primary'>دسترسی</Button.Ripple>
+            {/* <Button.Ripple onClick={handleIsOpenAccess} color='primary'>دسترسی</Button.Ripple> */}
+            <ModalAccesUser  />
+        </td>
+        <td>
+            <UncontrolledDropdown>
+              <DropdownToggle className='icon-btn hide-arrow ' color='transparent' size='sm' caret>
+                <MoreVertical size={15} />
+              </DropdownToggle>
+              <DropdownMenu className='bg-light'>
+                <DropdownItem  >
+                  <Edit className='me-50' size={15} /> <span onClick={goEditUser} className='align-middle text-primary' >ویرایش</span>
+                </DropdownItem>
+                <DropdownItem href='/' onClick={e => e.preventDefault()}>
+                  <Trash className='me-50' size={15} /> <span className='align-middle text-warning'>حذف</span>
+                </DropdownItem>
+              </DropdownMenu>
+            </UncontrolledDropdown>
         </td>
      
         <td>
@@ -90,21 +141,7 @@ const UserItem = ({id=0 , fName,setIsOpenAddUser, setIsOpenAccessUser , isOpenAc
           
         </td>        
 
-        <td>
-            <UncontrolledDropdown>
-              <DropdownToggle className='icon-btn hide-arrow ' color='transparent' size='sm' caret>
-                <MoreVertical size={15} />
-              </DropdownToggle>
-              <DropdownMenu className='bg-light'>
-                <DropdownItem href='/' onClick={e => e.preventDefault()}>
-                  <Edit className='me-50' size={15} /> <span className='align-middle text-primary'>ویرایش</span>
-                </DropdownItem>
-                <DropdownItem href='/' onClick={e => e.preventDefault()}>
-                  <Trash className='me-50' size={15} /> <span className='align-middle text-warning'>حذف</span>
-                </DropdownItem>
-              </DropdownMenu>
-            </UncontrolledDropdown>
-        </td>
+      
       
     </tr>
     

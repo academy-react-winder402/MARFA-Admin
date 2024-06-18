@@ -72,6 +72,11 @@ const Profile = ({}) => {
     return result;
   };
 
+  // function Edit
+  const  goEditUser = () =>{
+    navigate('/UserEditDetails/' + id )
+  }
+
   const {
     data,
     status,
@@ -124,7 +129,7 @@ const Profile = ({}) => {
                       // icon={<UserX size={20} />}
                       // onClick={handleIsOpenUser}
                       >
-                      <span className="align-middle  me-50">ویرایش اطلاعات </span>
+                      <span onClick={goEditUser} className="align-middle  me-50">ویرایش اطلاعات </span>
                       {/* <User size={35} />
                       <Plus size={15} /> */}
                       
@@ -214,89 +219,7 @@ const Profile = ({}) => {
             </Col>
           </Row>
 
-          {/* <Row className='w-50'>
-
-              <Col lg='3' md='6'>
-                <Card>
-                  <CardImg top src={gmailImage} alt='Card cap' />
-                  <CardBody>
-                    <CardTitle tag='h4'> Gmail</CardTitle>
-                    <CardText>
-                      {data && ( data.gmail === null ? "کاربر اکانت gmail را وارد نکرده" : data.gmail)}
-                    </CardText>
-                    <Button color='primary' outline>
-                        Go to gmail
-                    </Button>
-                  </CardBody>
-                </Card>
-              </Col>
-
-              <Col lg='3' md='6'>
-                <Card>
-                  <CardImg top src={linkedinImage} alt='Card cap' />
-                  <CardBody>
-                    <CardTitle tag='h4'>Linkedin </CardTitle>
-                    <CardText>
-                      {data && ( data.linkdinProfile === null ? "کاربر اکانت linkedin را وارد نکرده" : data.linkdinProfile)}
-                     </CardText>
-
-                    <Button color='primary' outline>
-                      Go to linkedin
-                    </Button>
-                  </CardBody>
-                </Card>
-              </Col>
-
-              <Col lg='3' md='6'>
-                <Card>
-                  <CardImg top src={telegramImage} alt='Card cap' />
-                  <CardBody>
-                    <CardTitle tag='h4'> Telegram</CardTitle>
-                    <CardText>
-                        {data && ( data.telegramLink === null ? "کاربر اکانت telegram را وارد نکرده" : data.telegramLink)}
-                    </CardText>
-                    <Button color='primary' outline>
-                      Go to telegram
-                    </Button>
-                  </CardBody>
-                </Card>
-              </Col>
-
-              <Col lg='3' md='6'>
-                <Card>
-                  <CardImg top src={phoneImage} alt='Card cap' />
-                  <CardBody>
-                    <CardTitle tag='h4'>Phone Number </CardTitle>
-                    <CardText>
-                       {data && ( data.phoneNumber === null ? "کاربر شماره تماس را وارد نکرده" : data.phoneNumber)}
-                    </CardText>
-                    <Button color='primary' outline>
-                        Call 
-                    </Button>
-                  </CardBody>
-                </Card>
-              </Col>
-
-            </Row> */}
-
-          {/* <Row>
-            <Col lg="6">
-              {data && (
-                <UserReservedCourse
-                  refetch2={refetch2}
-                  coursesReseves={data.coursesReseves}
-                  userId={data.id}
-                />
-              )}
-            </Col>
-
-            <Col lg="6">
-              {data && <UserAcceptCourse courses={data.courses} />}
-            </Col>
-          </Row> */}
-
-          {/* change role */}
-          {/* {data && <ChangeRole refetch2={refetch2} roles={data.roles} />} */}
+          
          <Row>
          <Col lg='3' sm='3'>
             <StatsHorizontal

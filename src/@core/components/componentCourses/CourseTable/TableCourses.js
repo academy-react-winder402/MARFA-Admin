@@ -1,6 +1,5 @@
-import { MoreVertical, Edit, Trash } from "react-feather";
-import { Card,Table, Input, Row, Col } from 'reactstrap'
-
+import { MoreVertical, Edit, Trash,BookOpen, Plus } from "react-feather";
+import { CardImg, Badge, Row,Table,Col, Input , Button } from 'reactstrap';
 import http from "../../../core/services/interceptore";
 import { useQuery } from "react-query";
 import CourseItem from "./CourseItem";
@@ -9,14 +8,29 @@ import { useEffect, useState , useRef } from "react";
 import Search from "antd/es/input/Search";
 import MyNavbar from "./MyNavbar";
 import CourseGroup from "./CourseGroup/CourseGroup";
+// import PaginationSeparated from "./PaginationSeparated";
+import { CustomPagination } from "./TablrRole/pagination";
 // import StatsCard from "../../componentsDashbord/StatsCard";
-
-
+// import Card from '@components/card-snippet'
+// import paginationSeparated from "./PaginationSourceCode"
 
 const TableCourses = () => {
 
-  const [search, setSearch] = useState("");
+  // const [paginationSize, setPaginasionSize] = useState(null);
+  // ******************pagination state************************
+  const [rowsPerPage, setRowsPerPage] = useState(10);
+  const [pageNamber, setPageNamber] = useState(1);
+  const [paginationArray, setPaginationArray] = useState(null);
 
+  // ******************************************************
+
+  const navigate = useNavigate()
+  const handleIsOpenUser =() =>
+  {
+    navigate("/Curses/CreatNewCurses")
+  }
+
+  const [search, setSearch] = useState("");
   const ref = useRef();
 
   const handleSearch = (e) => {
@@ -29,19 +43,21 @@ const TableCourses = () => {
     ref.current = timeOut
    
   };
+  
 
   const getAllCourses = async () => {
     const result = await http.get(
-      `/Course/CourseList?PageNumber=1&RowsOfPage=10&SortingCol=DESC&SortType=Expire&Query${search}`
+      `/Course/CourseList?PageNumber=${pageNamber}&RowsOfPage=${rowsPerPage}&SortingCol=DESC&SortType=Expire&Query${search}`
     );
-    // console.log(result);
     return result;
   };
+  const { data, status, refetch } = useQuery(["getAllCourses", search, pageNamber, rowsPerPage], getAllCourses,)
+  
 
-  const { data, status, refetch } = useQuery(["getAllCourses" , search], getAllCourses);
-
-  // data && console.log(data.courseDtos);
-
+  useEffect(()=>{
+   
+  }, [])
+ 
 
   const show2 = (x) =>{
     // console.log(x);
@@ -51,11 +67,24 @@ const TableCourses = () => {
     <div className='invoice-list-table-header w-100  me-1 ms-50 mt-2 mb-75'>
       <Row>
       
-      <Col xl="12" md="6" xs="12">
-            {/* <StatsCard cols={{ xl: "3", sm: "6" }} /> */}
+      <Col xl="6" md="6" xs="12">
+      <h2>دوره های ترم جاری :</h2>
+      </Col>
+      <Col lg='6' sm='6'>
+    <div className="d-flex justify-content-end  mt-md-0 mt-1">
+       <Button
+                      className="ms-2"
+                      color="primary"
+                      // icon={<BookOpen size={20} />}
+                      onClick={()=> navigate("/Curses/CreatNewCurses")}>
+                      
+                      <span className="align-middle  me-50">ایجاد دوره جدید</span>
+                      <BookOpen size={25} />
+                                           
+         </Button>
+         </div> 
        </Col>
       
-      <h2>دوره های ترم جاری :</h2>
 
       {/* <Input onChange={handleSearch}  type='text' placeholder='جستجو دوره' /> */}
       <div className='invoice-list-table-header w-100 me-1 ms-50 mt-2 mb-75'>
@@ -67,11 +96,11 @@ const TableCourses = () => {
               className='mx-50'
               type='select'
               id='rows-per-page'
-              // value={rowsPerPage}
-              // onChange={handlePerPage}
+              value={rowsPerPage}
+              onChange={(e)=> setRowsPerPage(e.target.value)}
               style={{ width: '5rem' }}
             >
-          
+              
               <option value='10'>10</option>
               <option value='25'>25</option>
               <option value='50'>50</option>
@@ -138,15 +167,23 @@ const TableCourses = () => {
                     refetch={refetch}
                     isActive={item.isActive}
                     isdelete={item.isdelete}
-                
                   />
-                
               );
             })}
         </tbody>
       </Table>
-      
       </Row>
+{/* ********************pagination component********************* */}
+      <div className='d-flex justify-content-center'>
+                <CustomPagination
+                  total={data?.totalCount}
+                  current={pageNamber}
+                  setCurrent={setPageNamber}
+                  rowsPerPage={rowsPerPage}
+                />
+{/* ********************pagination component********************* */}
+
+      </div>
     </div>
   );
 };

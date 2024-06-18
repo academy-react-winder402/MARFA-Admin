@@ -1,4 +1,4 @@
-import {List,Users,Airplay,File,Home, Circle } from "react-feather";
+import {List,Users,Airplay,File,Home, Circle,BookOpen,Book,Award,Edit,Columns } from "react-feather";
 
 export default [
   {
@@ -22,25 +22,26 @@ export default [
       {
         id: "ListCurses",
         title: "لیست دوره ها",
-        icon: < Circle size={12} />,
+        color:'success',
+        icon: <BookOpen size={25} />,
         navLink: "/Curses/ListCurses",
       },
       {
         id: "ListCursesUser",
         title: "لیست دوره های شما",
-        icon: <Circle size={12} />,
+        icon: <Book size={25} />,
         navLink: "/Curses/ListCursesUser",
       },
       {
         id: "SelectionListCursesUse",
-        title: "دوره های رزرو شده کاربران",
-        icon: <File size={12} />,
+        title: "دوره های رزرو شده",
+        icon: <Award size={25} />,
         navLink: "/Curses/SelectionListCursesUse",
       },
       {
         id: "CreatNewCurses",
         title: "ساخت دوره جدید",
-        icon: <Circle size={12} />,
+        icon: <Edit size={25} />,
         navLink: "/Curses/CreatNewCurses",
       },
     ],
@@ -54,19 +55,19 @@ export default [
       {
         id: "NewsList",
         title: "لیست اخبار",
-        icon: <Circle size={12} />,
+        icon: <Columns size={20} />,
         navLink: "/NewsPage/NewsList",
       },
       {
         id: "NewsCreatnew",
         title: "ایجاد خبر جدید",
-        icon: <Circle size={12} />,
+        icon: <Columns size={20} />,
         navLink: "/NewsPage/NewsCreatnew",
       },
       {
         id: "NewsCategory",
         title: "دسته بندی خبر",
-        icon: <Circle size={12} />,
+        icon: <Columns size={20} />,
         navLink: "/NewsPage/NewsCategory",
       },
     ],

@@ -166,7 +166,7 @@ function NewsItem({ data, apiParam, setApiParam, onClick, refetch }) {
               className="text-danger"
               href="/"
               onClick={(e) => onDelete(e, data?.id)}>
-              <XCircle className="me-50" size={15} />{" "}
+              <XCircle className="me-50" size={15} style={{width:"20px", height:"20px"}} />{" "}
               <span className="align-middle">حذف </span>
             </DropdownItem>
           </DropdownMenu>

@@ -1,6 +1,6 @@
 // ** Custom Components
 import Avatar from '@components/avatar'
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 // ** Reactstrap Imports
 
 
@@ -19,16 +19,32 @@ import { useQuery } from "react-query";
 import http from '../../../core/services/interceptore'
 
 const TableCommentCourse = () => {
+  // const const [paginationSize, setPaginasionSize] = useState(null);
+  // const [rowsPerPage, setRowsPerPage] = useState(10);
+  // const [pageNamber, setPageNamber] = useState(1);
+  // const [paginationArray, setPaginationArray] = useState(null);
+
   // ** vars
   const [search, setSearch] = useState("");
   const getAllCourses = async () => {
-    const result = await http.get("/Home/GetCoursesWithPagination?PageNumber=1&RowsOfPage=10&SortingCol=Active&SortType=DESC&TechCount=0");
+    const result = await http.get(`/Home/GetCoursesWithPagination?PageNumber=1&RowsOfPage=10&SortingCol=Active&SortType=DESC&TechCount=0`);
     // console.log(result);
     return result;
   };
-  const { data, onSuccess , isError, refetch } = useQuery("getAllCourses3", getAllCourses,
- 
+  const { data, onSuccess , isError, refetch } = useQuery(["getAllCourses3"], getAllCourses
+    // {
+    //   onSuccess:(data) => {
+    //     setPaginasionSize(Math.ceil(data.totalcount/rowsPerPage))
+    // },}
   );
+
+  // var pageArry=[]
+  // useEffect(()=>{
+  //   for(let i=1 ; i<=paginationSize ; i++){
+  //     pageArry.push(i)
+  //   }
+  //   setPaginationArray(pageArry),
+  // }, [paginationArray]),
  
   const colorsArr = {
     Technology: 'light-primary',

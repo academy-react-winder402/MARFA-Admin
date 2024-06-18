@@ -5,7 +5,7 @@ import WizardModernEditCourse from './WizardModernEditCourse/WizardModernEditCou
 const EditCourse = () => {
   return (
     <div>
-        <h1>hello</h1>
+       
       <WizardModernEditCourse/>
     </div>
   )

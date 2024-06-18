@@ -26,11 +26,12 @@ import "@styles/base/pages/dashboard-ecommerce.scss";
 
 // ** Demo Components
 import CardMedal from "../../@core/components/componentsDashbord/CardMedal";
-import StatsCard from "../../@core/components/componentsDashbord/StatsCard";
+import StatsCardHome from "../../@core/components/componentsDashbord/StatsCardHome";
 import CardMeetup from "../../@core/components/componentsDashbord/CardMeetup";
 import CompanyTable from "../../@core/components/componentsDashbord/CompanyTable";
 import CompanyTable2 from "../../@core/components/componentsDashbord/CompanyTable2";
 import SupportTracker from "../../@core/components/componentsDashbord/SupportTracker";
+// import SupportTrackercopy from "../../@core/components/componentsDashbord/SupportTrackercopy";
 import AllListUser from "../../@core/components/componentsDashbord/AllListUser";
 import ListTeacherBahrAcavemi from "../../@core/components/componentsDashbord/ListTeacherBahrAcavemi";
 import SupportTrackerUser from "../../@core/components/componentsDashbord/SupportTrackerUser";
@@ -47,31 +48,14 @@ const Home = () => {
       <div id="dashboard-ecommerce">
         {/* <Breadcrumbs title='Analytics Cards' data={[{ title: 'Cards' }, { title: 'Analytics Actions' }]} /> */}
         <Row className="match-height">
-          <Col xl="4" md="6" xs="12">
+          <Col xl="3" md="6" xs="12">
             <CardMedal />
           </Col>
-          <Col xl="8" md="6" xs="12">
-            <StatsCard cols={{ xl: "3", sm: "6" }} />
+          <Col xl="9" md="6" xs="12">
+            <StatsCardHome cols={{ xl: "3", sm: "6" }} />
           </Col>
         </Row>
-        {/* <Row className='match-height'>
-      <Col lg='4' md='12'>
-        <Row className='match-height'>
-          <Col lg='6' md='3' xs='6'>
-            <OrdersBarChart warning={colors.warning.main} />
-          </Col>
-          <Col lg='6' md='3' xs='6'>
-            <ProfitLineChart info={colors.info.main} />
-          </Col>
-          <Col lg='12' md='6' xs='12'>
-            <Earnings success={colors.success.main} />
-          </Col>
-        </Row>
-      </Col>
-      <Col lg='8' md='12'>
-        <RevenueReport primary={colors.primary.main} warning={colors.warning.main} />
-      </Col>
-    </Row> */}
+      
         <Row className="match-height">
           <Col lg="6" xs="12">
             {/* <CompanyTable /> */}
@@ -89,7 +73,8 @@ const Home = () => {
             />
           </Col>
           <Col lg="6" xs="12">
-            <SupportTracker
+            {/* <SupportTrackercopy */}
+            //  <SupportTracker 
               primary={colors.primary.main}
               danger={colors.danger.main}
             />

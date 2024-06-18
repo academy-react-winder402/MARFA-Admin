@@ -20,6 +20,14 @@ const WizardModern = () => {
 
   // ** State
   const [stepper, setStepper] = useState(null)
+  const [CreatCourseValues, setCreatCourseValues] = useState({});
+
+  // const handleSubmit = (values)=>{
+  //   const data = new FormData()
+  //   data.append('Title' , values.Title)
+
+  //   const res = http.post('khhdvl' , data)
+  // }
 
   const steps = [
     {
@@ -27,14 +35,14 @@ const WizardModern = () => {
       title: 'آپلود عکس',
       subtitle: 'عکس مورد نظر را وارد کنید.',
       icon: <Camera size={18} />,
-      content: <FileUploaderMultiple stepper={stepper} type='wizard-modern' />
+      content: <FileUploaderMultiple CreatCourseValues={CreatCourseValues} setCreatCourseValues={setCreatCourseValues}  stepper={stepper} type='wizard-modern' />
     },
     {
       id: 'account-details',
       title: ' اطلاعات دوره',
       subtitle: 'اطلاعات دوره را وارد کنید.',
       icon: <FileText size={18} />,
-      content: <CoursesDetails stepper={stepper} type='wizard-modern' />
+      content: <CoursesDetails  CreatCourseValues={CreatCourseValues} setCreatCourseValues={setCreatCourseValues} stepper={stepper} type='wizard-modern' />
     },
     {
       id: 'personal-info',

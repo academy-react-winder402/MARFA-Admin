@@ -22,7 +22,7 @@ const NewsDetaileSidebar = () => {
   const [data, setData] = useState(null);
   
   const noImage = data?.currentImageAddressTumb=== null || data?.currentImageAddressTumb === 'undefined' || data?.currentImageAddressTumb === ''
-  console.log(noImage);
+  // console.log(noImage);
   // useEffect(() => {
   //   axios.get('/blog/list/data/sidebar').then(res => setData(res.data))
   // }, [])
@@ -60,7 +60,7 @@ const NewsDetaileSidebar = () => {
             <img className='rounded' src={noImage ? post?.currentImageAddressTumb : notFound}  alt={post.currentImageAddressTumb} width='60' height='50' />
           </Link>
           <div>
-            <h6 className="blog-recent-post-title">
+            <h6 className="blog-recent-post-title whitespace-normal text-truncate ">
              
               <Link
                 className="text-body-heading"
@@ -115,12 +115,12 @@ const NewsDetaileSidebar = () => {
             {newsForSlide !== null ? (
               <Fragment>
                 <div className="blog-recent-posts p-2 mt-1 border-2 border">
-                  <h6 className="section-label p-2 rounded-2xl  bg-light-primary">آخرین اخبار</h6>
-                  <div className="mt-75">{renderRecentPosts()}</div>
+                  <h6 className="section-label  p-2 rounded-2xl  bg-light-primary">آخرین اخبار</h6>
+                  <div className="mt-75 text-truncate p-1"> {renderRecentPosts()}</div>
                 </div>
                 <div className="blog-categories mt-3 border-2 p-2 border ">
                   <h6 className="section-label rounded-2xl p-2 bg-light-primary">دسته بندی ها</h6>
-                  <div className="mt-1">{renderCategories()}</div>
+                  <div className="mt-1 ">{renderCategories()}</div>
                 </div>
               </Fragment>
             ) : null}

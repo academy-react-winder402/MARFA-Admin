@@ -1,6 +1,6 @@
 import { Card, CardHeader, CardBody, CardTitle, CardText } from "reactstrap";
 
-import AllUserTab1 from "../../@core/components/componentUsers/UserAllComponent/AllUserTAp1";
+import AllUserTab1 from "../../@core/components/componentUsers/UserAllcComponent/AllUserTAp1";
 
 
 const ListUsers = () => {

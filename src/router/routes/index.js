@@ -35,10 +35,11 @@ const ForgotPassword = lazy(() => import("../../pages/ForgetPassword/ForgotPassw
 const Error = lazy(() => import("../../pages/ErrorPage/Error.js"));
 const ListCurses = lazy(() => import("../../@core/components/componentCourses/coursespageMain/ListCurses"));
 const CreateNewUser = lazy(() => import("../../@core/components/componentUsers/CreateNewUser.js"));
-const AllUserTAb1 = lazy(() => import("../../@core/components/componentUsers/UserAllComponent/AllUserTAp1.js"));
-const AllTeacherTab2 = lazy(() => import("../../@core/components/componentUsers/UserAllComponent/AllTeacherTab2.js"));
-const AllStudentTab3 = lazy(() => import("../../@core/components/componentUsers/UserAllComponent/AllStudentTab3.js"));
-const AllAdminTab4 = lazy(() => import("../../@core/components/componentUsers/UserAllComponent/AllAdminTab4.js"));
+const AllUserTAb1 = lazy(() => import("../../@core/components/componentUsers/UserAllcComponent/AllUserTAp1.js"));
+const AllTeacherTab2 = lazy(() => import("../../@core/components/componentUsers/UserAllcComponent/AllTeacherTab2.js"));
+const AllStudentTab3 = lazy(() => import("../../@core/components/componentUsers/UserAllcComponent/AllStudentTab3.js"));
+const AllAdminTab4 = lazy(() => import("../../@core/components/componentUsers/UserAllcComponent/AllAdminTab4.js"));
+const UserEditDetails = lazy(() => import("../../@core/components/componentUsers/UserAllcComponent/UserEditDetails.js"));
 const ListCursesUser = lazy(() => import("../../@core/components/componentCourses/coursespageMain/ListCursesUser"));
 const CreatNewCurses = lazy(() => import("../../@core/components/componentCourses/coursespageMain/CreatNewCurses"));
 const SelectionListCursesUse = lazy(() => import("../../@core/components/componentCourses/coursespageMain/SelectionListCursesUse"));
@@ -48,6 +49,7 @@ const NewsPage = lazy(() => import('../../pages/NewsPage/NewsPage.js'));
 const NewsList = lazy(() => import('../../@core/components/NewsALLComponent/NewsList/NewsList'));
 const NewsCreatnew = lazy(() => import('../../@core/components/NewsALLComponent/NewsCreatnew'));
 const NewsCategory = lazy(() => import('../../@core/components/NewsALLComponent/NewsCategory'));
+const CategoryCreateNews = lazy(() => import('../../@core/components/NewsALLComponent/NewsCategory/CategoryCreateNews.js'));
 const NewsChangeEdid = lazy(() => import('../../@core/components/NewsALLComponent/EditNews/NewsChangeEdid.js'));
 const NewsDetaile = lazy(() => import('../../@core/components/NewsALLComponent/NewsDetailComponent/NewsDetaile'));
 const DetailsCourse = lazy(() => import('../../@core/components/componentCourses/CourseListsecondcomponent/DetailsCourse'));
@@ -99,6 +101,10 @@ const Routes = [
   {
     path: "/AllStudentTab3",
     element: <AllStudentTab3/>,
+  },
+  {
+    path: "/UserEditDetails/:id",
+    element: <UserEditDetails/>,
   },
 
   // end user page
@@ -159,6 +165,10 @@ const Routes = [
   {
     path: "/NewsPage/NewsCategory",
     element: <NewsCategory />,
+  },
+  {
+    path: "/NewsPage/CategoryCreateNews",
+    element: <CategoryCreateNews />,
   },
   // ene
   {

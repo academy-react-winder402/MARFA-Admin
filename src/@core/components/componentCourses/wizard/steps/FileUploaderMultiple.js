@@ -9,7 +9,8 @@ import { selectThemeColors } from '@utils'
 import { useDropzone } from 'react-dropzone'
 import { FileText, X, DownloadCloud } from 'react-feather'
 
-const FileUploaderMultiple = ({ stepper}) => {
+const FileUploaderMultiple = ({ stepper , CreatCourseValues ,setCreatCourseValues}) => {
+
   // ** State
   const [files, setFiles] = useState([])
   
@@ -22,7 +23,7 @@ const FileUploaderMultiple = ({ stepper}) => {
 
   const renderFilePreview = file => {
     if (file.type.startsWith('image')) {
-      return <img className='rounded' alt={file.name} src={URL.createObjectURL(file)} height='28' width='28' />
+      return <img className='rounded text-center mx-auto ' alt={file.name} src={URL.createObjectURL(file)} height='auto' width='550' />
     } else {
       return <FileText size='28' />
     }
@@ -63,24 +64,22 @@ const FileUploaderMultiple = ({ stepper}) => {
 
   return (
     <div>
-
-   
-    <Card>
+     <Card className='border border-secondary'>
       <CardHeader>
         <CardTitle tag='h4'>عکس دوره را وارد کنید.</CardTitle>
       </CardHeader>
       <CardBody>
         <div {...getRootProps({ className: 'dropzone' })}>
-          <input {...getInputProps()} />
+          <input {...getInputProps()}  onChange={(e)=>setCreatCourseValues(old => ({...old , Image:e.target.files[0]})  )} />
           <div className='d-flex align-items-center justify-content-center flex-column'>
             <DownloadCloud size={64} />
-            <h5>عکس دوره را اینجا وارد کنید</h5>
+            <h5>برای وارد کردن تصویر کلیک کنید </h5>
             <p className='text-secondary'>
-          فایل را بکشید یاروی{' '}
+              فایل را به اینجا بکشید یا روی{' '}
               <a href='/' onClick={e => e.preventDefault()}>
-                مرورگر
+               مرورگر
               </a>{' '}
-              کلیک کنید
+              کلیک کنید.
             </p>
           </div>
         </div>
@@ -89,9 +88,9 @@ const FileUploaderMultiple = ({ stepper}) => {
             <ListGroup className='my-2'>{fileList}</ListGroup>
             <div className='d-flex justify-content-end'>
               <Button className='me-1' color='danger' outline onClick={handleRemoveAllFiles}>
-                Remove All
+              حذف همه
               </Button>
-              <Button color='primary'>Upload Files</Button>
+              {/* <Button color='primary'>Upload Files</Button> */}
             </div>
           </Fragment>
         ) : null}

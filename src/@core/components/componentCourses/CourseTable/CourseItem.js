@@ -105,7 +105,11 @@ function CourseItem({
               </DropdownToggle>
               <DropdownMenu className='bg-light'>
                 <DropdownItem href='/' onClick={e => e.preventDefault()}>
-                  <Edit className='me-50 text-warning ' size={15} /> <span className='align-middle text-warning'>ویرایش</span>
+                  <Edit className='me-50 text-warning ' size={15} />
+                   <span  onClick={() => {
+                      navigate("/DetailsCourse/EditCourse/" + id);
+                      }} 
+                      className='align-middle text-warning'>ویرایش</span>
                 </DropdownItem>
                 <DropdownItem href='/' onClick={e => e.preventDefault()}>
                   <Trash className='me-50  text-danger' size={15} /> <span className='align-middle  text-danger'>حذف</span>

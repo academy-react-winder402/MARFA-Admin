@@ -46,12 +46,12 @@ const SupportTrackerUser = props => {
           dataLabels: {
             name: {
               offsetY: -5,
-              fontFamily: 'Montserrat',
+              // fontFamily: 'Montserrat',
               fontSize: '1rem'
             },
             value: {
               offsetY: 15,
-              fontFamily: 'Montserrat',
+              // fontFamily: 'Montserrat',
               fontSize: '1.714rem'
             }
           }
@@ -108,7 +108,7 @@ const SupportTrackerUser = props => {
             <Chart options={options} series={series} type='radialBar' height={270} id='support-tracker-card' />
           </Col>
         </Row>
-        <div className='d-flex justify-content-between mt-1' onClick={() => navigate("/TableCourses")}>
+        <div className='d-flex justify-content-between mt-1' onClick={() => navigate("/Curses/ListCurses")}>
           <div className='text-center'>
             <CardText className='mb-50'>رزروهای تایید نشده</CardText>
             <span className='font-large-1 fw-bold'>{course?.allReserveNotAccept}</span>

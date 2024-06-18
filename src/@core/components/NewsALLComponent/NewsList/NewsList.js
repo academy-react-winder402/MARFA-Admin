@@ -132,6 +132,7 @@ const NewsList = () => {
           </div>
         </CardHeader>
          </Row>
+         {/* search---------------- */}
         <Row className="justify-content-end mx-0">
           
         <CardHeader className="flex-md-row flex-column align-md-items-center align-items-start border-bottom">
@@ -157,6 +158,7 @@ const NewsList = () => {
         
           </CardHeader>
         </Row>
+        
         {status === "loading" ? (
           <ProjSpinner />
         ) : status === "error" ? (
@@ -168,7 +170,7 @@ const NewsList = () => {
                 <thead className="p-2 bg-black">
                   <tr >
                     <th className="p-2 item-center">عنوان خبر</th>
-                    <th>نویسنده</th>
+                    <th>پدیدآور</th>
                     <th>تاریخ درج</th>
                     <th>تعداد لایک</th>
                     <th>تعداد بازدید</th>

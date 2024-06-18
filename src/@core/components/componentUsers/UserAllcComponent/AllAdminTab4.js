@@ -14,6 +14,7 @@ import StatsHorizontal from "../../widgets/stats/StatsHorizontal";
 import { User, UserPlus,Plus, UserCheck, UserX } from 'react-feather'
 import ModallAddUserNew from './ModallAddUserNew'
 import ModalaccessUser from './ModalaccessUser'
+import EditUserExample from './ModalEditUser'
 
   // tabel users page 1
 
@@ -106,34 +107,14 @@ const AllAdminTab4 = () => {
             />
           </Col>
           <Col lg='6' sm='6'>
+          {/* modal */}
             <div className="d-flex justify-content-end  mt-md-0 mt-1">
-                <Button
-                  className="ms-2"
-                  // tag={Link} to='./userAdd/add'
-                  color="primary"
-                  icon={<UserX size={20} />}
-                  onClick={handleIsOpenUser}
-                  >
-                  <span className="align-middle  me-50">اضافه کاربر جدید</span>
-                  <User size={35} />
-                  <Plus size={15} />
-                  
-                </Button>
-                
-        
+            <EditUserExample setIsOpenAddUser={setIsOpenAddUser}/>
+                    
             </div>
           </Col>
         </Row>
-        <Row>
-        <div className={`position-absolute rounded top-25 z-50 w-25 bg-light  start-50 translate-middle ${addUser}`}>
-         <ModallAddUserNew setIsOpenAddUser={setIsOpenAddUser}/>
-        </div>
-        {/* modal access */}
-        <div className={`bg-info position-absolute rounded top-25 z-50 w-25 bg-light  start-50 translate-middle ${accessUser}`}>
-         <ModalaccessUser setIsOpenAccessUser={setIsOpenAccessUser} />
-
-        </div>
-        </Row>
+    
         {/* <Input onChange={handleSearch}  type='text' placeholder='search' /> */}
         {/* search ... */}
        <div  className=''>

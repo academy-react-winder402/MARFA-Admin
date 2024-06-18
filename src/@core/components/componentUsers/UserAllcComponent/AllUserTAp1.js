@@ -1,25 +1,34 @@
 import React, { useState , useRef } from 'react'
-import { AlignJustify, Rss, Info, Image, Users, Edit } from 'react-feather'
-import {Card, CardImg, Badge, Table, Input , Button } from 'reactstrap'
+
 import UserItem from './UserItem'
 import {useQuery} from 'react-query'
 import http from '../../../core/services/interceptore';
-import { Row, Col } from 'reactstrap'
+import { Row, Col,Table, Input } from 'reactstrap'
 import Breadcrumbs from "@components/breadcrumbs";
 // import StatsVertical from '../StatsVertical/StatsVertical'
 // import Earnings from '../Earnings/Earnings'
-import MyNavbar from '../UserTable/MyNavbar'
 import StatsCard from '../../componentsDashbord/StatsCard'
 import { User, UserPlus,Plus, UserCheck, UserX } from 'react-feather'
 import StatsHorizontal from "../../widgets/stats/StatsHorizontal";
 import ModallAddUserNew from './ModallAddUserNew'
 import ModalaccessUser from './ModalaccessUser'
+import EditUserExample from './ModalEditUser';
 
 
 const AllUserTAp1 = () => {
     const [isOpenAddUser, setIsOpenAddUser] = useState(false)
     const [isOpenAccessUser, setIsOpenAccessUser] = useState(false)
     const [search, setSearch] = useState("");
+
+// ********************FOR ACTIVE TAB***********************
+
+
+
+
+
+
+
+// *******************************************
   
     const ref = useRef();
     const handleIsOpenUser = () => {
@@ -53,12 +62,12 @@ const AllUserTAp1 = () => {
 
 
     const getAlls =async () =>{
-      const result = await http.get(`/User/UserMannage?PageNumber=1&RowsOfPage=100&SortingCol=DESC&SortType=InsertDate&Query=${search}&IsActiveUser=true&IsDeletedUser=true&roleId=2`)
+      const result = await http.get(`/User/UserMannage?PageNumber=1&RowsOfPage=200&SortingCol=DESC&SortType=InsertDate&Query=${search}`)
         //  const result = await http.get(`/User/UserMannage?PageNumber=0&RowsOfPage=0&SortingCol=DESC&SortType=InsertDate&Query=${search}&IsActiveUser=true&IsDeletedUser=true&roleId`)
       return result
     }
   
-    const {data , Status} = useQuery(['getAll' , search] , getAlls)
+    const {data , Status , refetch} = useQuery(['getAll' , search] , getAlls)
   
     var completeProfile = 0;
   
@@ -87,8 +96,8 @@ const AllUserTAp1 = () => {
            
             <Row className="match-height d-flex  align-items-center  ">
               
-                <Col xl="12" md="6" xs="12">
-                  <StatsCard cols={{ xl: "3", sm: "6" }} />    
+                <Col  xl="12" md="6" xs="12">
+                  <StatsCard  cols={{ xl: "3", sm: "6" }} />    
                 </Col>
             
             
@@ -111,9 +120,9 @@ const AllUserTAp1 = () => {
               </Col>
               <Col lg='6' sm='6'>
                 <div className="d-flex justify-content-end  mt-md-0 mt-1">
-                    <Button
+                    {/* <Button
                       className="ms-2"
-                    //   tag={Link} to='./userAdd/add'
+                      // tag={Link} to='./userAdd/add'
                       color="primary"
                       icon={<UserX size={20} />}
                       onClick={handleIsOpenUser}
@@ -122,24 +131,28 @@ const AllUserTAp1 = () => {
                       <User size={35} />
                       <Plus size={15} />
                       
-                    </Button>
+                    </Button> */}
                     
+                 <EditUserExample setIsOpenAddUser={setIsOpenAddUser}/>
             
                 </div>
               </Col>
             </Row>
-            <Row>
-            <div className={`position-absolute rounded top-25 z-50 w-25 bg-light  start-50 translate-middle ${addUser}`}>
-             <ModallAddUserNew setIsOpenAddUser={setIsOpenAddUser}/>
-            </div>
+            {/* <Row> */}
+            {/* <div className={`position-absolute rounded top-25 z-50 w-25 bg-light  start-50 translate-middle ${addUser}`}> */}
+             {/* <ModallAddUserNew setIsOpenAddUser={setIsOpenAddUser}/> */}
+            {/* </div> */}
             {/* modal access */}
-            <div className={`bg-info position-absolute rounded top-25 z-50 w-25 bg-light  start-50 translate-middle ${accessUser}`}>
-             <ModalaccessUser setIsOpenAccessUser={setIsOpenAccessUser} />
+            {/* <div className={`bg-info position-absolute rounded top-25 z-50 w-25 bg-light  start-50 translate-middle ${accessUser}`}> */}
+             {/* <ModalaccessUser setIsOpenAccessUser={setIsOpenAccessUser} /> */}
     
-            </div>
-            </Row>
+            {/* </div> */}
+            {/* </Row> */}
+
+
+            {/* search ...************************ */}
+
             {/* <Input onChange={handleSearch}  type='text' placeholder='search' /> */}
-            {/* search ... */}
            <div  className=''>
            <div className='invoice-list-table-header w-100 me-1 ms-50 mt-2 mb-75'>
             <Row>
@@ -188,13 +201,13 @@ const AllUserTAp1 = () => {
                   <th>نام</th>
                   {/* <th >نقش کاربر</th> */}
                   <th>جنسیت</th>
-                  <th className="text-nowrap "> کد استاد</th>
+                  <th className="text-nowrap"> کد کاربری</th>
                   <th>ایمیل</th>              
                   <th>شماره تماس</th>
                   <th className="text-nowrap">وضعیت </th>
                   <th> دسترسی</th>
+                  <th className="text-nowrap">حدف/ویرایش  </th>
                   <th>  جزییات </th>
-                  <th>حدف/ویرایش  </th>
     
                 </tr>
               </thead>
@@ -202,8 +215,10 @@ const AllUserTAp1 = () => {
                 {data && (
                     data?.listUser.map((item , index) =>{
                               return(
-                                <UserItem setIsOpenAddUser={setIsOpenAddUser} setIsOpenAccessUser={setIsOpenAccessUser} isOpenAccessUser={isOpenAccessUser} key={index} id={item.id} fName={item.fname} lNmae={item.lname} role='استاد' gender={item.gender}
-                                profileCompletionPercentage={item.profileCompletionPercentage} gmail={item.gmail} phoneNumber={item.phoneNumber}/>         
+                                <UserItem setIsOpenAddUser={setIsOpenAddUser} setIsOpenAccessUser={setIsOpenAccessUser} isOpenAccessUser={isOpenAccessUser} key={index} id={item.id} 
+                                fName={item.fname} lNmae={item.lname} role='همه کاربران' gender={item.gender}
+                                profileCompletionPercentage={item.profileCompletionPercentage} refetch={refetch}
+                                active={item.active} isdelete={item.isdelete} gmail={item.gmail} phoneNumber={item.phoneNumber}/>         
                           )
                       })         
                     )

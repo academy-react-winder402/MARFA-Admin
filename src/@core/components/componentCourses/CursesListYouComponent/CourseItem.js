@@ -12,6 +12,8 @@ import http from "../../../../@core/core/services/interceptore";
 import { useQuery } from "react-query";
 import { useFormikContext } from "formik";
 import { Button } from 'reactstrap'
+import ModalAccesUser from '../../componentUsers/UserAllcComponent/ModalAccesUser';
+import ModalReservCours from "../../componentUsers/UserAllcComponent/ModalReservCours";
 
 
 
@@ -29,7 +31,8 @@ function CourseItem({
   isdelete,
   isOpenAddReserv,
   setIsOpenAddReserv
-}) {
+    }) 
+    {
   const handleIsOpenResev = () => {
     
       setIsOpenAddReserv(!isOpenAddReserv)
@@ -115,7 +118,11 @@ function CourseItem({
               <DropdownMenu 
                className='bg-light text-secondary'>
                 <DropdownItem href='/' onClick={e => e.preventDefault()}>
-                  <Edit className='me-50  text-warning' size={15} /> <span className='align-middle  text-warning'>ویرایش</span>
+                  <Edit className='me-50  text-warning' size={15} />
+                   <span  onClick={() => {
+                    navigate("/DetailsCourse/EditCourse/" + id);
+                    }} 
+                  className='align-middle  text-warning'>ویرایش</span>
                 </DropdownItem>
                 <DropdownItem href='/' onClick={e => e.preventDefault()}>
                   <Trash className='me-50  text-danger' size={15} /> <span className='align-middle  text-danger'>حذف</span>
@@ -125,14 +132,16 @@ function CourseItem({
       </td>
 
       <td className="text-nowrap ">
-        <Button
+        {/* <Button
           pill
           color="primary"
      
-          onClick={handleIsOpenResev}
+          // onClick={handleIsOpenResev}
+         
         >
           رزرو
-        </Button>
+        </Button> */}
+         <ModalReservCours/>
       </td>
 
     </tr>

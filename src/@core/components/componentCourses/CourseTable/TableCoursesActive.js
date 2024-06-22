@@ -18,9 +18,9 @@ const TableCoursesActive = () => {
 
   // const [paginationSize, setPaginasionSize] = useState(null);
   // ******************pagination state************************
-  const [rowsPerPage, setRowsPerPage] = useState(10);
-  const [pageNamber, setPageNamber] = useState(1);
-  const [paginationArray, setPaginationArray] = useState(null);
+  const [rowsPerPageActive, setRowsPerPageActive] = useState(10);
+  const [pageNamberActive, setPageNamberActive] = useState(1);
+  const [paginationArrayActive, setPaginationArrayActive] = useState(null);
 
   // ******************************************************
 
@@ -32,7 +32,6 @@ const TableCoursesActive = () => {
 
   const [search, setSearch] = useState("");
   const ref = useRef();
-
   const handleSearch = (e) => {
     clearTimeout(ref.current)
     const timeOut = setTimeout(()=>{
@@ -45,13 +44,13 @@ const TableCoursesActive = () => {
   };
   
 
-  const getAllCourses = async () => {
+  const getAllCoursesActive = async () => {
     const result = await http.get(
-      `/Course/CourseList?PageNumber=${pageNamber}&RowsOfPage=${rowsPerPage}&SortingCol=DESC&SortType=Expire&Query${search}`
+      `/Course/CourseList?PageNumber=${pageNamberActive}&RowsOfPage=200&SortingCol=DESC&SortType=Expire&Query${search}`
     );
     return result;
   };
-  const { data, status, refetch } = useQuery(["getAllCourses", search, pageNamber, rowsPerPage], getAllCourses,)
+  const { data, status, refetch } = useQuery(["getAllCoursesActive", search, pageNamberActive, rowsPerPageActive], getAllCoursesActive,)
   
 
   useEffect(()=>{
@@ -96,8 +95,8 @@ const TableCoursesActive = () => {
               className='mx-50'
               type='select'
               id='rows-per-page'
-              value={rowsPerPage}
-              onChange={(e)=> setRowsPerPage(e.target.value)}
+              value={rowsPerPageActive}
+              onChange={(e)=> setRowsPerPageActive(e.target.value)}
               style={{ width: '5rem' }}
             >
               
@@ -152,10 +151,10 @@ const TableCoursesActive = () => {
         <tbody >
           {data &&
             data.courseDtos.map((item, index) => {
-              return (
-              
-                  
-                  <CourseItem 
+              if(item.isActive) {
+               
+              return (  
+                    <CourseItem 
                     key={index}
                     id={item.courseId}
                     fullName={item.fullName}
@@ -168,7 +167,7 @@ const TableCoursesActive = () => {
                     isActive={item.isActive}
                     isdelete={item.isdelete}
                   />
-              );
+              )}
             })}
         </tbody>
       </Table>
@@ -176,10 +175,10 @@ const TableCoursesActive = () => {
 {/* ********************pagination component********************* */}
       <div className='d-flex justify-content-center'>
                 <CustomPagination
-                  total={data?.totalCount}
-                  current={pageNamber}
-                  setCurrent={setPageNamber}
-                  rowsPerPage={rowsPerPage}
+                  total={data?.length}
+                  current={pageNamberActive}
+                  setCurrent={setPageNamberActive}
+                  rowsPerPage={rowsPerPageActive}
                 />
 {/* ********************pagination component********************* */}
 

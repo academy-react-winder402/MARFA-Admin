@@ -15,13 +15,32 @@ import { User, UserPlus,Plus, UserCheck, UserX } from 'react-feather'
 import ModallAddUserNew from './ModallAddUserNew'
 import ModalaccessUser from './ModalaccessUser'
 import EditUserExample from './ModalEditUser'
+import { CustomPagination } from '../../componentCourses/CourseTable/TablrRole/pagination';
 
   // tabel users page 1
 
 const AllAdminTab4 = () => {
+
+ // ******************pagination state************************
+ const [rowsPerPage, setRowsPerPage] = useState(10);
+ const [pageNamber, setPageNamber] = useState(1);
+ const [paginationArray, setPaginationArray] = useState(null);
+
+ // ******************************************************
+
   const [isOpenAddUser, setIsOpenAddUser] = useState(false)
   const [isOpenAccessUser, setIsOpenAccessUser] = useState(false)
   const [search, setSearch] = useState("");
+
+ // **********************Active & Dactive********************************
+
+  const [IsActive, setIsActive] = useState(true)
+  const activeTab = IsActive ? `bg-light-primary` : `bg-transparent`;
+  const deActiveTab = !IsActive ? `bg-light-primary` : `bg-transparent`;
+
+
+ // ***********************************************************************
+
 
   const ref = useRef();
   const handleIsOpenUser = () => {
@@ -49,11 +68,12 @@ const AllAdminTab4 = () => {
 
 
   const getAdmins =async () =>{
-    const result = await http.get(`/User/UserMannage?PageNumber=1&RowsOfPage=100&SortingCol=DESC&SortType=InsertDate&Query=${search}&IsActiveUser=true&IsDeletedUser=true&roleId=1`)
+ 
+    const result = await http.get(`/User/UserMannage?PageNumber=${pageNamber}&RowsOfPage=${rowsPerPage}&SortingCol=DESC&SortType=InsertDate&Query=${search}&IsActiveUser=${IsActive}&IsDeletedUser=true&roleId=1`)
     return result
   }
 
-  const {data , Status} = useQuery(['getAdmin' , search] , getAdmins)
+  const {data , Status , refetch} = useQuery(['getAdmin', search,rowsPerPage,pageNamber,IsActive] , getAdmins)
 
   var completeProfile = 0;
 
@@ -90,16 +110,30 @@ const AllAdminTab4 = () => {
         
         
            {/* activ & deactiv */}
-          <Col lg='3' sm='3'>
+          <Col lg='3' sm='3'
+            onClick={() => {
+              
+              setIsActive(true);
+              refetch();
+            }}
+          >
             <StatsHorizontal
+              className={`cursor-pointer ${activeTab}`}
               color='success'
               // statTitle='Active Users'
               icon={<UserCheck size={20} />}
-              renderStats={<h3 className='fw-bolder mb-75'>فعال</h3>}
+              renderStats={<h3 className='fw-bolder mb-75 '>فعال</h3>}
             />
           </Col>
-          <Col lg='3' sm='3'>
+          <Col lg='3' sm='3'
+            onClick={() => {
+              setIsActive(false);
+              refetch();
+            }}
+            
+          >
             <StatsHorizontal
+             className={`cursor-pointer ${deActiveTab}`}
               color='warning'
               // statTitle='Pending Users'
               icon={<UserX size={20} />}
@@ -127,8 +161,8 @@ const AllAdminTab4 = () => {
               className='mx-50'
               type='select'
               id='rows-per-page'
-              // value={rowsPerPage}
-              // onChange={handlePerPage}
+              value={rowsPerPage}
+              onChange={(e)=> setRowsPerPage(e.target.value)}
               style={{ width: '5rem' }}
             >
           
@@ -207,7 +241,16 @@ const AllAdminTab4 = () => {
         </Table> 
        </div>
     </div>
-             
+ {/* ********************pagination component********************* */}
+      <div className='d-flex justify-content-center'>
+                <CustomPagination
+                  total={data?.totalCount}
+                  current={pageNamber}
+                  setCurrent={setPageNamber}
+                  rowsPerPage={rowsPerPage}
+                />
+      </div>
+{/* ********************pagination component********************* */}       
        
     </>   
       )

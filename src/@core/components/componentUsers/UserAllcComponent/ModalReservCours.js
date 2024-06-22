@@ -158,44 +158,7 @@ const ModalReservCours = () => {
               </div>
             </Col>
       
-      {/* ---------------checkBox */}
-
-      {/* <Formik className='w-25 p-3'  onSubmit={onSubmit} initialValues={{lastName : '' , firstName : '' , gmail : '' , password : '' , phoneNumber : '' , isStudent : true ,isAdmin : false , isTeacher : false}}>
-          {({values , handleSubmit, handleChange , setFieldValue }) => (
-            <form  onSubmit={handleSubmit}>
-              <Row >
-               
-                <Col md='4' sm='12' className='mb-1'>
-                  <Label className='form-label' for='isAdmin'>
-                     ادمین
-                  </Label>
-                  <Input onChange={handleChange} value={values.isAdmin} type='checkbox' defaultChecked id='isAdmin' />
-                </Col>   
-                <Col md='4' sm='12' className='mb-1'>
-                  <Label className='form-label' for='isStudent'>
-                    دانشجو
-                  </Label>
-                  <Input onChange={handleChange} value={values.isStudent} type='checkbox' defaultChecked id='isStudent' />
-                </Col>
-                <Col md='4' sm='12' className='mb-1'>
-                  <Label className='form-label' for='isTeacher'>
-                     استاد
-                  </Label>
-                  <Input onChange={handleChange} value={values.isTeacher} type='checkbox'  id='isTeacher' />
-                </Col>                              
-                                              
-
-              </Row>
-
-                <Button className='me-1 float-end' color='primary' type='submit' >
-                 ارسال
-                </Button>
-
-            </form>             
-          )}
-         
-        </Formik> */}
-      {/* ----------------------end */}
+     
             <Col xs={12} className='text-center mt-2 pt-50'>
               <Button type='submit' className='me-1' color='primary'>
                 ثبت اطلاعات

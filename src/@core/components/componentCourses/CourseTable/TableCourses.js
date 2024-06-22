@@ -181,9 +181,10 @@ const TableCourses = () => {
                   setCurrent={setPageNamber}
                   rowsPerPage={rowsPerPage}
                 />
+      </div>
 {/* ********************pagination component********************* */}
 
-      </div>
+      
     </div>
   );
 };

@@ -9,19 +9,19 @@ import ModalAccesUser from './ModalAccesUser';
 
 const UserItem = ({
   id,
-   fName,
-   setIsOpenAddUser, 
-   setIsOpenAccessUser ,
-    isOpenAccessUser ,
-    refetch, 
-    lNmae ,
-    active,
+  fName,
+  setIsOpenAddUser, 
+  setIsOpenAccessUser ,
+  isOpenAccessUser ,
+  refetch, 
+  lNmae ,
+  active,
   isdelete,
-   role ,
-    gender 
-    , profileCompletionPercentage , 
-    gmail , 
-    phoneNumber}) => {
+  role ,
+  gender, 
+  profileCompletionPercentage , 
+  gmail , 
+  phoneNumber}) => {
   
   const handleIsOpenAccess = () => {
     setIsOpenAddUser(false)
@@ -46,7 +46,6 @@ const UserItem = ({
         active: isdelete === true ? false : true,
         id: id,   
       }
-  
    
       const result = await http.delete(`/User/DeleteUser`, {
         data: obj,
@@ -106,9 +105,8 @@ const UserItem = ({
         <Button
           // className={`active === true ? text-info : text-danger`}
           pill
-          color={active === true ? "primary" : 'warning'}
+          color={active === 'True' ? "primary" : 'warning'}
           // text={active === true ? "info" : 'danger'}
-         
           onClick={handleActive}
         >
           {active === true ? "فعال" : "غیر فعال"}
@@ -128,7 +126,7 @@ const UserItem = ({
                 <DropdownItem  >
                   <Edit className='me-50' size={15} /> <span onClick={goEditUser} className='align-middle text-primary' >ویرایش</span>
                 </DropdownItem>
-                <DropdownItem href='/' onClick={e => e.preventDefault()}>
+                <DropdownItem href='/' onClick={e => handleDelete(e)}>
                   <Trash className='me-50' size={15} /> <span className='align-middle text-warning'>حذف</span>
                 </DropdownItem>
               </DropdownMenu>

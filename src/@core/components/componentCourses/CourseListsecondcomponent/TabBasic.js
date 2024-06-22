@@ -58,7 +58,7 @@ const TabsBasic = () => {
             color='primary'
             statTitle='دانشجو دوره'
             icon={<User size={20} />}
-            renderStats={<h3 className='fw-bolder mb-75'>21,459</h3>}
+            // renderStats={<h3 className='fw-bolder mb-75'>21,459</h3>}
           />
         </Col>
         <Col lg='3' sm='6'>
@@ -66,7 +66,7 @@ const TabsBasic = () => {
             color='danger'
             statTitle='نفر نظر دادند'
             icon={<UserPlus size={20} />}
-            renderStats={<h3 className='fw-bolder mb-75'>4,567</h3>}
+            // renderStats={<h3 className='fw-bolder mb-75'>4,567</h3>}
           />
         </Col>
         <Col lg='3' sm='6'>
@@ -74,7 +74,7 @@ const TabsBasic = () => {
             color='success'
             statTitle='نفر خریداری کردند'
             icon={<UserCheck size={20} />}
-            renderStats={<h3 className='fw-bolder mb-75'>19,860</h3>}
+            // renderStats={<h3 className='fw-bolder mb-75'>19,860</h3>}
           />
         </Col>
         <Col lg='3' sm='6'>
@@ -82,7 +82,7 @@ const TabsBasic = () => {
             color='warning'
             statTitle='نفر پسندیدند.'
             icon={<UserX size={20} />}
-            renderStats={<h3 className='fw-bolder mb-75'>237</h3>}
+            // renderStats={<h3 className='fw-bolder mb-75'>237</h3>}
           />
         </Col>
           </Row>

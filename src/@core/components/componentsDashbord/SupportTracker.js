@@ -28,9 +28,8 @@ const SupportTracker = props => {
   const navigate = useNavigate()
   // ** get dashboard detials
   const { data: course , status } = useQuery("course", () => {
-    return http.get(
-      `/Course/CourseList?PageNumber=1&RowsOfPage=10&SortingCol=DESC&SortType=Expire&Query`
-    );
+    return http.get("/Report/DashboardReport")
+  
   });
 
   const options = {
@@ -80,8 +79,8 @@ const SupportTracker = props => {
       },
       labels: ['درخواست‌های پذیرش شده']
     },
-    series = [parseInt(course?.reserveAcceptPercent)]
-
+    // series = [parseInt(course?.reserveAcceptPercent)]
+    series = [parseInt(dashDetails?.reserveAcceptPercent)]
   return status == "success" ? (
     <Card>
       <CardHeader className='pb-0'>

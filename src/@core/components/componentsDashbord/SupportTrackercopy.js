@@ -1,6 +1,6 @@
 // ** React Imports
 import { useEffect, useState } from 'react'
-import http from "../../core/services/interceptore"
+
 // ** Third Party Components
 import axios from 'axios'
 import Chart from 'react-apexcharts'
@@ -14,19 +14,18 @@ import {
   CardText,
   CardTitle,
   CardHeader,
-  DropdownMenu,
-  DropdownItem,
-  DropdownToggle,
-  UncontrolledDropdown
 } from 'reactstrap'
+import { useQuery } from 'react-query'
+import http from '../../core/services/interceptore';
+import ProjSpinner from '../../components/common/Spinner';
+import { useNavigate } from 'react-router'
 
-const SupportTrackercopy = props => {
-  // ** State
-  const [data, setData] = useState(null)
-
-  useEffect(() => {
-    http.get('/Course/CourseList?PageNumber=1&RowsOfPage=10&SortingCol=DESC&SortType=Expire&Query')
-  }, [])
+const SupportTracker = props => {
+  const navigate = useNavigate()
+  // ** get dashboard detials
+  const { data: dashDetails , status } = useQuery("dashDetails", () => {
+    return http.get("/Report/DashboardReport");
+  });
 
   const options = {
       plotOptions: {
@@ -45,12 +44,12 @@ const SupportTrackercopy = props => {
           dataLabels: {
             name: {
               offsetY: -5,
-              // fontFamily: 'Montserrat',
+              fontFamily: 'Montserrat',
               fontSize: '1rem'
             },
             value: {
               offsetY: 15,
-              // fontFamily: 'Montserrat',
+              fontFamily: 'Montserrat',
               fontSize: '1.714rem'
             }
           }
@@ -73,53 +72,56 @@ const SupportTrackercopy = props => {
       stroke: {
         dashArray: 8
       },
-      labels: ['Completed Tickets']
+      labels: ['درخواست‌های پذیرش شده']
     },
-    series = [83]
+    series = [parseInt(dashDetails?.reserveAcceptPercent)]
 
-  return data !== null ? (
+  return status == "success" ? (
     <Card>
       <CardHeader className='pb-0'>
-        <CardTitle tag='h4'>{data.title}</CardTitle>
-        <UncontrolledDropdown className='chart-dropdown'>
+        <CardTitle tag='h4'>آمار دوره‌های رزرو شده</CardTitle>
+        {/* <UncontrolledDropdown className='chart-dropdown'>
           <DropdownToggle color='' className='bg-transparent btn-sm border-0 p-50'>
             Last 7 days
           </DropdownToggle>
           <DropdownMenu end>
-            {data.last_days.map(item => (
+            {dashDetails?.map(item => (
               <DropdownItem className='w-100' key={item}>
                 {item}
               </DropdownItem>
             ))}
           </DropdownMenu>
-        </UncontrolledDropdown>
+        </UncontrolledDropdown> */}
       </CardHeader>
       <CardBody>
         <Row>
           <Col sm='2' className='d-flex flex-column flex-wrap text-center'>
-            <h1 className='font-large-2 fw-bolder mt-2 mb-0'>{data.totalTicket}</h1>
-            <CardText>Tickets</CardText>
+            <h1 className='font-large-2 fw-bolder mt-2 mb-0'>
+              {/* {data.totalTicket} */}
+              {dashDetails?.allReserve}
+              </h1>
+            <CardText>کل دوره‌های رزرو شده</CardText>
           </Col>
           <Col sm='10' className='d-flex justify-content-center'>
             <Chart options={options} series={series} type='radialBar' height={270} id='support-tracker-card' />
           </Col>
         </Row>
-        <div className='d-flex justify-content-between mt-1'>
+        <div className='d-flex justify-content-between mt-1' onClick={() => navigate("/T/Curses/ListCursesableCourses")}>
           <div className='text-center'>
-            <CardText className='mb-50'>New Tickets</CardText>
-            <span className='font-large-1 fw-bold'>{data.newTicket}</span>
+            <CardText className='mb-50'>رزروهای تایید نشده</CardText>
+            <span className='font-large-1 fw-bold'>{dashDetails?.allReserveNotAccept}</span>
           </div>
           <div className='text-center'>
-            <CardText className='mb-50'>Open Tickets</CardText>
-            <span className='font-large-1 fw-bold'>{data.openTicket}</span>
+            <CardText className='mb-50'>رزروهای تایید شده</CardText>
+            <span className='font-large-1 fw-bold'>{dashDetails?.allReserveAccept}</span>
           </div>
           <div className='text-center'>
-            <CardText className='mb-50'>Response Time</CardText>
-            <span className='font-large-1 fw-bold'>{data.responseTime}d</span>
+            <CardText className='mb-50'>کل مبلغ پرداختی</CardText>
+            <span className='font-large-1 fw-bold'>{dashDetails?.allPaymentCost} تومان</span>
           </div>
         </div>
       </CardBody>
     </Card>
-  ) : null
+  ) : <ProjSpinner />
 }
-export default SupportTrackercopy
+export default SupportTracker

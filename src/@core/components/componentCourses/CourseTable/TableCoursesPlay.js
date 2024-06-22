@@ -152,9 +152,8 @@ const TableCoursesPlay = () => {
         <tbody >
           {data &&
             data.courseDtos.map((item, index) => {
-              return (
-              
-                  
+              if(item.statusName=='درحال برگزاری') {
+              return ( 
                   <CourseItem 
                     key={index}
                     id={item.courseId}
@@ -168,7 +167,7 @@ const TableCoursesPlay = () => {
                     isActive={item.isActive}
                     isdelete={item.isdelete}
                   />
-              );
+              );}
             })}
         </tbody>
       </Table>

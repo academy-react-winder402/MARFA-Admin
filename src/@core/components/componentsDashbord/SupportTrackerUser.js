@@ -24,9 +24,7 @@ const SupportTrackerUser = props => {
   const navigate = useNavigate()
   // ** get dashboard detials
   const { data: course , status } = useQuery("course", () => {
-    return http.get(
-      `/CourseReserve`
-    );
+    return  http.get("/Report/DashboardReport");
   });
 
   const options = {
@@ -74,14 +72,14 @@ const SupportTrackerUser = props => {
       stroke: {
         dashArray: 8
       },
-      labels: ['درخواست‌های پذیرش شده']
+      labels: ['  کاربران فعال']
     },
-    series = [parseInt(course?.reserveAcceptPercent)]
+    series = [parseInt(course?.activeUserPercent)]
 
   return status == "success" ? (
     <Card>
       <CardHeader className='pb-0'>
-        <CardTitle tag='h4'>آمار کاربران رزرو شده</CardTitle>
+        <CardTitle tag='h4'>آمار کل کاربران  </CardTitle>
         {/* <UncontrolledDropdown className='chart-dropdown'>
           <DropdownToggle color='' className='bg-transparent btn-sm border-0 p-50'>
             Last 7 days
@@ -99,10 +97,13 @@ const SupportTrackerUser = props => {
         <Row>
           <Col sm='2' className='d-flex flex-column flex-wrap text-center'>
             <h1 className='font-large-2 fw-bolder mt-2 mb-0'>
+              
+              
               {/* {data.totalTicket} */}
-              {course?.allReserve}
+              
+              {course?.allUser}
               </h1>
-            <CardText>کل دوره‌های رزرو شده</CardText>
+            <CardText>کل کاربران</CardText>
           </Col>
           <Col sm='10' className='d-flex justify-content-center'>
             <Chart options={options} series={series} type='radialBar' height={270} id='support-tracker-card' />
@@ -110,16 +111,16 @@ const SupportTrackerUser = props => {
         </Row>
         <div className='d-flex justify-content-between mt-1' onClick={() => navigate("/Curses/ListCurses")}>
           <div className='text-center'>
-            <CardText className='mb-50'>رزروهای تایید نشده</CardText>
-            <span className='font-large-1 fw-bold'>{course?.allReserveNotAccept}</span>
+            <CardText className='mb-50'>کاربران  فعال</CardText>
+            <span className='font-large-1 fw-bold'>{(course?.allUser)-(course?.deactiveUsers)}</span>
           </div>
           <div className='text-center'>
-            <CardText className='mb-50'>رزروهای تایید شده</CardText>
-            <span className='font-large-1 fw-bold'>{course?.allReserveAccept}</span>
+            <CardText className='mb-50'>کاربران غیر فعال  </CardText>
+            <span className='font-large-1 fw-bold'>{course?.deactiveUsers}</span>
           </div>
           <div className='text-center'>
-            <CardText className='mb-50'>کل مبلغ پرداختی</CardText>
-            <span className='font-large-1 fw-bold'>{course?.allPaymentCost} تومان</span>
+            <CardText className='mb-50'>  عدم تکمیل پروفایل </CardText>
+            <span className='font-large-1 fw-bold'>{course?.inCompeletUserCount} نفر</span>
           </div>
         </div>
       </CardBody>

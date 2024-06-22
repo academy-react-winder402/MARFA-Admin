@@ -30,9 +30,9 @@ import StatsCardHome from "../../@core/components/componentsDashbord/StatsCardHo
 import CardMeetup from "../../@core/components/componentsDashbord/CardMeetup";
 import CompanyTable from "../../@core/components/componentsDashbord/CompanyTable";
 import CompanyTable2 from "../../@core/components/componentsDashbord/CompanyTable2";
-import SupportTracker from "../../@core/components/componentsDashbord/SupportTracker";
-// import SupportTrackercopy from "../../@core/components/componentsDashbord/SupportTrackercopy";
-import AllListUser from "../../@core/components/componentsDashbord/AllListUser";
+// import SupportTracker from "../../@core/components/componentsDashbord/SupportTracker";
+import SupportTrackercopy from "../../@core/components/componentsDashbord/SupportTrackercopy";
+// import AllListUser from "../../@core/components/componentsDashbord/AllListUser";
 import ListTeacherBahrAcavemi from "../../@core/components/componentsDashbord/ListTeacherBahrAcavemi";
 import SupportTrackerUser from "../../@core/components/componentsDashbord/SupportTrackerUser";
 // import SupportTracker from './componentsDashbord/SupportTracker'
@@ -72,9 +72,9 @@ const Home = () => {
               danger={colors.danger.main}
             />
           </Col>
+            {/* <SupportTracker  */}
           <Col lg="6" xs="12">
-            {/* <SupportTrackercopy */}
-            //  <SupportTracker 
+            <SupportTrackercopy
               primary={colors.primary.main}
               danger={colors.danger.main}
             />

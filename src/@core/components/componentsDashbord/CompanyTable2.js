@@ -63,7 +63,7 @@ const CompanyTable = () => {
           <td className='text-nowrap'>
             <div className='d-flex flex-column'>
               <span className='fw-bolder mb-25'>{col.levelName}</span>
-              <span className='font-small-2 text-muted'>in {col.levelName}</span>
+              {/* <span className='font-small-2 text-muted'>in {col.levelName}</span> */}
             </div>
           </td>
           <td>نفر{col.currentRegistrants}</td>

@@ -15,9 +15,23 @@ import StatsHorizontal from "../../widgets/stats/StatsHorizontal";
 import ModallAddUserNew from './ModallAddUserNew'
 import ModalaccessUser from './ModalaccessUser'
 import EditUserExample from './ModalEditUser'
+import { CustomPagination } from '../../componentCourses/CourseTable/TablrRole/pagination';
+
 
 
 const AllUserTAp1 = () => {
+    // ******************pagination state************************
+    const [rowsPerPage, setRowsPerPage] = useState(10);
+    const [pageNamber, setPageNamber] = useState(1);
+    const [paginationArray, setPaginationArray] = useState(null);
+
+     // **********************Active & Dactive********************************
+
+  const [IsActive, setIsActive] = useState(true)
+  const activeTab = IsActive ? `bg-light-primary` : `bg-transparent`;
+  const deActiveTab = !IsActive ? `bg-light-primary` : `bg-transparent`;
+  
+    // ******************************************************
     const [isOpenAddUser, setIsOpenAddUser] = useState(false)
     const [isOpenAccessUser, setIsOpenAccessUser] = useState(false)
     const [search, setSearch] = useState("");
@@ -54,12 +68,12 @@ const AllUserTAp1 = () => {
 
 
     const getAlls =async () =>{
-      const result = await http.get(`/User/UserMannage?PageNumber=1&RowsOfPage=200&SortingCol=DESC&SortType=InsertDate&Query=${search}&IsActiveUser=true&IsDeletedUser=true&roleId=3`)
+      const result = await http.get(`/User/UserMannage?PageNumber=${pageNamber}&RowsOfPage=${rowsPerPage}&SortingCol=DESC&SortType=InsertDate&Query=${search}&IsActiveUser=${IsActive}&IsDeletedUser=true&roleId=3`)
         //  const result = await http.get(`/User/UserMannage?PageNumber=0&RowsOfPage=0&SortingCol=DESC&SortType=InsertDate&Query=${search}&IsActiveUser=true&IsDeletedUser=true&roleId`)
       return result
     }
   
-    const {data , Status} = useQuery(['getAll' , search] , getAlls)
+    const {data , Status, refetch} = useQuery(['getAll' , search, rowsPerPage ,pageNamber, IsActive ] , getAlls)
   
     var completeProfile = 0;
   
@@ -94,17 +108,28 @@ const AllUserTAp1 = () => {
             
             
                {/* activ & deactiv */}
-              <Col lg='3' sm='3'>
+              <Col lg='3' sm='3'
+               onClick={() => {
+                setIsActive(true);
+                refetch();
+              }}>
                 <StatsHorizontal
                   color='success'
+                  className={`cursor-pointer ${activeTab}`}
                   // statTitle='Active Users'
                   icon={<UserCheck size={20} />}
                   renderStats={<h3 className='fw-bolder mb-75'>فعال</h3>}
                 />
               </Col>
-              <Col lg='3' sm='3'>
+              <Col lg='3' sm='3'
+               onClick={() => {
+                setIsActive(false);
+                refetch();
+              }}
+              >
                 <StatsHorizontal
                   color='warning'
+                  className={`cursor-pointer ${deActiveTab}`}
                   // statTitle='Pending Users'
                   icon={<UserX size={20} />}
                   renderStats={<h3 className='fw-bolder mb-75'>غیرفعال</h3>}
@@ -132,8 +157,8 @@ const AllUserTAp1 = () => {
                   className='mx-50'
                   type='select'
                   id='rows-per-page'
-                  // value={rowsPerPage}
-                  // onChange={handlePerPage}
+                  value={rowsPerPage}
+                  onChange={(e)=> setRowsPerPage(e.target.value)}
                   style={{ width: '5rem' }}
                 >
               
@@ -184,7 +209,9 @@ const AllUserTAp1 = () => {
                 {data && (
                     data?.listUser.map((item , index) =>{
                               return(
-                                <UserItem setIsOpenAddUser={setIsOpenAddUser} setIsOpenAccessUser={setIsOpenAccessUser} isOpenAccessUser={isOpenAccessUser} key={index} id={item.id} fName={item.fname} lNmae={item.lname} role='دانشجو' gender={item.gender}
+                                <UserItem setIsOpenAddUser={setIsOpenAddUser} refetch={refetch}
+                                active={item.active} isdelete={item.isdelete} setIsOpenAccessUser={setIsOpenAccessUser} 
+                                isOpenAccessUser={isOpenAccessUser} key={index} id={item.id} fName={item.fname} lNmae={item.lname} role='دانشجو' gender={item.gender}
                                 profileCompletionPercentage={item.profileCompletionPercentage} gmail={item.gmail} phoneNumber={item.phoneNumber}/>         
                           )
                       })         
@@ -198,7 +225,16 @@ const AllUserTAp1 = () => {
             </Table> 
            </div>
         </div>
-                 
+        {/* ********************pagination component********************* */}
+      <div className='d-flex justify-content-center'>
+                <CustomPagination
+                  total={data?.totalCount}
+                  current={pageNamber}
+                  setCurrent={setPageNamber}
+                  rowsPerPage={rowsPerPage}
+                />
+      </div>
+{/* ********************pagination component********************* */}        
            
         </>   
           )

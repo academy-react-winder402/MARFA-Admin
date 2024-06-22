@@ -94,12 +94,11 @@ const FormDetailCourse = () => {
     <>
 
 
-
       <Card>
 
         <CardHeader className="p-1 items-center border-2 d-flex justify-content-center">
           <CardTitles />
-          <Badge color="light-primary" > <div  style={{fontSize:'25px', padding:"4px"}}>جزییات کامل دوره </div></Badge>
+          <Badge color="light-primary" > <div  style={{fontSize:'25px', padding:"4px"}}>جزییات دوره </div></Badge>
         </CardHeader>
         {data && (<CardBody>
             
@@ -110,7 +109,7 @@ const FormDetailCourse = () => {
               <Col lg='12'>
                 
                 <div  style={{fontSize:'20px'}}>
-                <Badge  className="mt-2 mb-1 p-1" color='light-primary' >   دوره:</Badge>
+                <Badge  className=" mt-1 mb-1 p-1" color='light-primary' >   دوره:</Badge>
                   
                   <CardText>{data.title}</CardText>
                 </div>
@@ -147,24 +146,6 @@ const FormDetailCourse = () => {
                   <Badge className="mt-2 mb-1 p-1" color='light-primary'>  پایان دوره:</Badge>  
                   <CardText>{data.endTime}</CardText>
                 </div>               
-
-                {/* <div className="mt-2" style={{fontSize:'20px'}}>
-                  <Badge color='light-primary'>  توضیحات    :</Badge>                    
-                  <CardText>{data.describe}</CardText>
-                </div>  */}
-
-                {/* <div className="mt-2" style={{fontSize:'16px'}}>
-                  <Badge color='light-primary'>  courseCommentTotal    :</Badge>     
-                  <CardText>{data.courseCommentTotal}</CardText>
-
-                  {/* <div onClick={()=>setShow3(true)}>
-                  <CommentModal   show3={show3} setShow3={setShow3} courseId={id}  />                    
-                  </div> */}
-                {/* </div> */} */
-
-                
-
-                            
               </Col>
           </Row> 
           <Row>

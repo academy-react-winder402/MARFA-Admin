@@ -85,9 +85,9 @@ const FileUploaderSingle = () => {
             <ListGroup className='my-2'>{fileList}</ListGroup>
             <div className='d-flex justify-content-end'>
               <Button className='me-1' color='danger' outline onClick={handleRemoveAllFiles}>
-                Remove All
+                 حذف همه
               </Button>
-              <Button color='primary'>Upload Files</Button>
+              {/* <Button color='primary'>Upload Files</Button> */}
             </div>
           </Fragment>
         ) : null}

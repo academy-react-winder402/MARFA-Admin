@@ -75,7 +75,7 @@ const TableReservCourse = () => {
           <td className='text-nowrap'>
             <div className='d-flex flex-column'>
               <span className='fw-bolder mb-25'>{col.levelName}</span>
-              <span className='font-small-2 text-muted'>in {col.levelName}</span>
+              {/* <span className='font-small-2 text-muted'>in {col.levelName}</span> */}
             </div>
           </td>
           <td>نفر{col.currentRegistrants}</td>
@@ -149,10 +149,10 @@ const TableReservCourse = () => {
         <thead>
           <tr  >
             <th  className='p-2 m-1'> نام دوره</th>
-            <th>نام رزرو کننده</th>
-            <th>زمان رزرو  </th>
-            <th> وضعیت رزرو </th>
-            <th>پدیرفتن رزرو</th>
+            <th className='p-2 m-1'>نام رزرو کننده</th>
+            <th className='p-2 m-1'>زمان رزرو  </th>
+            <th className='p-2 m-1'> وضعیت رزرو </th>
+            <th className='p-2 m-1'>پدیرفتن رزرو</th>
           </tr>
         </thead>
         <tbody>{renderData()}</tbody>

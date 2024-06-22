@@ -44,7 +44,7 @@ const TableCoursesDelete = () => {
    
   };
   
-
+  const delCount = 0
   const getAllCourses = async () => {
     const result = await http.get(
       `/Course/CourseList?PageNumber=${pageNamber}&RowsOfPage=${rowsPerPage}&SortingCol=DESC&SortType=Expire&Query${search}`
@@ -152,9 +152,11 @@ const TableCoursesDelete = () => {
         <tbody >
           {data &&
             data.courseDtos.map((item, index) => {
-              return (
               
-                  
+              if(item.isdelete) {
+                // delCount += 1
+                // console.log('delCount', delCount);
+              return (
                   <CourseItem 
                     key={index}
                     id={item.courseId}
@@ -168,7 +170,7 @@ const TableCoursesDelete = () => {
                     isActive={item.isActive}
                     isdelete={item.isdelete}
                   />
-              );
+              );}
             })}
         </tbody>
       </Table>
@@ -176,7 +178,7 @@ const TableCoursesDelete = () => {
 {/* ********************pagination component********************* */}
       <div className='d-flex justify-content-center'>
                 <CustomPagination
-                  total={data?.totalCount}
+                  total={data?.length}
                   current={pageNamber}
                   setCurrent={setPageNamber}
                   rowsPerPage={rowsPerPage}

@@ -54,6 +54,10 @@ const NewsChangeEdid = lazy(() => import('../../@core/components/NewsALLComponen
 const NewsDetaile = lazy(() => import('../../@core/components/NewsALLComponent/NewsDetailComponent/NewsDetaile'));
 const DetailsCourse = lazy(() => import('../../@core/components/componentCourses/CourseListsecondcomponent/DetailsCourse'));
 const EditCourse = lazy(() => import('../../@core/components/componentCourses/CourseListsecondcomponent/EditCourse'));
+const TableCoursesActive = lazy(() => import('../../@core/components/componentCourses/CourseTable/TableCoursesActive.js'));
+const TableCoursesDelete = lazy(() => import('../../@core/components/componentCourses/CourseTable/TableCoursesDelete.js'));
+const TableCoursesPlay = lazy(() => import('../../@core/components/componentCourses/CourseTable/TableCoursesPlay.js'));
+const TableCourses = lazy(() => import('../../@core/components/componentCourses/CourseTable/TableCourses.js'));
 
 // ** Merge Routes
 const Routes = [
@@ -139,6 +143,24 @@ const Routes = [
   {
     path: "/Curses/ListCurses",
     element: <ListCurses />,
+    children:[
+      {
+        path:"/Curses/ListCurses",
+        element:<TableCourses/>
+      },
+      {
+        path:"/Curses/ListCurses/TableCoursesActive",
+        element:<TableCoursesActive/>
+      },
+      {
+        path:"/Curses/ListCurses/TableCoursesDelete",
+        element:<TableCoursesDelete/>
+      },
+      {
+        path:"/Curses/ListCurses/TableCoursesPlay",
+        element:<TableCoursesPlay/>
+      },
+    ]
   },
   // News
   {

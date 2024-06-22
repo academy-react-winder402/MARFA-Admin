@@ -9,6 +9,8 @@ import avatar2 from '@src/assets/images/portrait/small/avatar-s-6.jpg'
 import avatar3 from '@src/assets/images/portrait/small/avatar-s-7.jpg'
 import { MoreVertical, Edit, Trash } from 'react-feather'
 import { Table, Badge, UncontrolledDropdown, DropdownMenu, DropdownItem, DropdownToggle } from 'reactstrap'
+import { useQuery } from 'react-query'
+import http from '../../../core/services/interceptore'
 
 const avatarGroupData1 = [
   {
@@ -94,31 +96,44 @@ const avatarGroupData4 = [
   }
 ]
 
-const TableBacicHeart = () => {
+const TableBacicHeart = ({userId}) => {
+
+  const getUserCorseFavorite = async () => {
+    const result = await http.get(
+      `/CourseReserve?=`
+    );
+    return result;
+  };
+  const { data, status, refetch } = useQuery(["getUserFavorite"], getUserCorseFavorite,)
+  
   return (
     <Table responsive>
       <thead>
         <tr>
-          <th>نام دوره</th>
+        <th>نام دوره</th>
           <th>رزرو کننده</th>
-          <th>رزرو شده قبلی </th>
+          <th> تاریخ رزرو   </th>
           <th>وضعیت دوره</th>
           <th>عملیات</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
+      {data && data.map( (item , index) => {
+          // console.log(item);
+          if(item?.studentId == userId){
+             return(
+              <tr key={index}>
           <td>
             <img className='me-75' src={angular} alt='angular' height='20' width='20' />
-            <span className='align-middle fw-bold'> تیلویند </span>
+            <span className='align-middle fw-bold'> {item?.courseName} </span>
           </td>
-          <td>MARFA-1</td>
+          <td>{item?.studentName}</td>
           <td>
-            <AvatarGroup data={avatarGroupData1} />
+              {item?.reserverDate}
           </td>
           <td>
             <Badge pill color='light-primary' className='me-1'>
-              فعال
+              {item?.accept ? 'تائید شدهههه' : 'تائید نشده'}
             </Badge>
           </td>
           <td>
@@ -137,96 +152,10 @@ const TableBacicHeart = () => {
             </UncontrolledDropdown>
           </td>
         </tr>
-        <tr>
-          <td>
-            <img className='me-75' src={react} alt='react' height='20' width='20' />
-            <span className='align-middle fw-bold'>React Project</span>
-          </td>
-          <td>Ronald Frest</td>
-          <td>
-            <AvatarGroup data={avatarGroupData2} />
-          </td>
-          <td>
-            <Badge pill color='light-success' className='me-1'>
-              Completed
-            </Badge>
-          </td>
-          <td>
-            <UncontrolledDropdown>
-              <DropdownToggle className='icon-btn hide-arrow' color='transparent' size='sm' caret>
-                <MoreVertical size={15} />
-              </DropdownToggle>
-              <DropdownMenu>
-                <DropdownItem href='/' onClick={e => e.preventDefault()}>
-                  <Edit className='me-50' size={15} /> <span className='align-middle'>Edit</span>
-                </DropdownItem>
-                <DropdownItem href='/' onClick={e => e.preventDefault()}>
-                  <Trash className='me-50' size={15} /> <span className='align-middle'>Delete</span>
-                </DropdownItem>
-              </DropdownMenu>
-            </UncontrolledDropdown>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <img className='me-75' src={vuejs} alt='vuejs' height='20' width='20' />
-            <span className='align-middle fw-bold'>Vuejs Project</span>
-          </td>
-          <td>Jack Obes</td>
-          <td>
-            <AvatarGroup data={avatarGroupData3} />
-          </td>
-          <td>
-            <Badge pill color='light-info' className='me-1'>
-              Scheduled
-            </Badge>
-          </td>
-          <td>
-            <UncontrolledDropdown>
-              <DropdownToggle className='icon-btn hide-arrow' color='transparent' size='sm' caret>
-                <MoreVertical size={15} />
-              </DropdownToggle>
-              <DropdownMenu>
-                <DropdownItem href='/' onClick={e => e.preventDefault()}>
-                  <Edit className='me-50' size={15} /> <span className='align-middle'>Edit</span>
-                </DropdownItem>
-                <DropdownItem href='/' onClick={e => e.preventDefault()}>
-                  <Trash className='me-50' size={15} /> <span className='align-middle'>Delete</span>
-                </DropdownItem>
-              </DropdownMenu>
-            </UncontrolledDropdown>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <img className='me-75' src={bootstrap} alt='bootstrap' height='20' width='20' />
-            <span className='align-middle fw-bold'>Bootstrap Project</span>
-          </td>
-          <td>Jerry Milton</td>
-          <td>
-            <AvatarGroup data={avatarGroupData4} />
-          </td>
-          <td>
-            <Badge pill color='light-warning' className='me-1'>
-              Pending
-            </Badge>
-          </td>
-          <td>
-            <UncontrolledDropdown>
-              <DropdownToggle className='icon-btn hide-arrow' color='transparent' size='sm' caret>
-                <MoreVertical size={15} />
-              </DropdownToggle>
-              <DropdownMenu>
-                <DropdownItem href='/' onClick={e => e.preventDefault()}>
-                  <Edit className='me-50' size={15} /> <span className='align-middle'>Edit</span>
-                </DropdownItem>
-                <DropdownItem href='/' onClick={e => e.preventDefault()}>
-                  <Trash className='me-50' size={15} /> <span className='align-middle'>Delete</span>
-                </DropdownItem>
-              </DropdownMenu>
-            </UncontrolledDropdown>
-          </td>
-        </tr>
+            )}
+          // if(item?.studentId === userId){
+          // }
+        }) }
       </tbody>
     </Table>
   )

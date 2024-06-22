@@ -7,10 +7,12 @@ import { fields } from "./Editor";
 // import EditorJS from '@editorjs/editorjs';
 // ** Icons Imports
 import { ArrowLeft, ArrowRight } from "react-feather";
-
+import EditorJsComponent from "./Editorjs"
 // ** Reactstrap Imports
 import { Label, Row, Col, Input, Form, Button } from "reactstrap";
 import { Formik } from "formik";
+
+
 
 const Description = ({stepper, type,  CreatCourseValues, setCreatCourseValues,}) => {
      const thirdStep = (values) => {
@@ -27,9 +29,7 @@ const Description = ({stepper, type,  CreatCourseValues, setCreatCourseValues,})
 //   /**
 //    * Id of Element that should contain Editor instance
 //    */
- 
-
-//   holder: 'editorjs'
+ //   holder: 'editorjs'
 // });
 
 
@@ -43,26 +43,20 @@ const Description = ({stepper, type,  CreatCourseValues, setCreatCourseValues,})
       <Formik initialValues={{ describe: "" }} onSubmit={thirdStep}>
         {({ values, handleSubmit, handleChange }) => (
           <Form onSubmit={handleSubmit}>
-            <Row>
-              {/* <Editorjs/> */}
             
-             {/* <editor/> */}
-             
+            
+            <Row className=" mt-10">
+            
+            /*setDescribe={}*/
                
-              <Col md="6" className="mb-1">
-                <Label className="form-label" for={`landmark-${type}`}>
-               اتاتا
-                </Label>
-                <Input
-                
-                  type="text"
-                  // value={values.describe}
-                  onChange={handleChange}
-                  name={`landmark-${type}`}
-                  id={`landmark-${type}`}
-                  placeholder="Borough bridge"
-                />
-              </Col>
+                  <EditorJsComponent  />
+              {/* <Col md="6" className="mb-1"> */}
+                {/* <Label className="form-label" for={`landmark-${type}`}> */}
+               
+                {/* </Label> */}
+             
+              {/* </Col> */}
+
             </Row>
            
             <div className="d-flex justify-content-between">

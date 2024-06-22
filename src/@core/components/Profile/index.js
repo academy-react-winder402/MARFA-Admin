@@ -64,7 +64,9 @@ import StatsHorizontal from "../widgets/stats/StatsHorizontal";
 
 const Profile = ({}) => {
   const { id } = useParams();
-
+  const [showTable , setShowTable]= useState(true)
+  const bgReserv = showTable ? `bg-light-primary` : `bg-translate`
+  const bgFavorite = !showTable ? `bg-light-primary` : `bg-translate`
   const navigate = useNavigate();
 
   const getUsersInfo = async () => {
@@ -221,25 +223,31 @@ const Profile = ({}) => {
 
           
          <Row>
-         <Col lg='3' sm='3'>
+         <Col lg='3' sm='3'
+          onClick={() => setShowTable(true)}
+         >
             <StatsHorizontal
               color='success'
+              className={`cursor-pointer ${bgReserv}`}
               // statTitle='Active Users'
               icon={<Bookmark size={20} />}
               renderStats={<h3 className='fw-bolder mb-75'>دوره های رزو شده</h3>}
             />
           </Col>
-          <Col lg='3' sm='3'>
+          <Col lg='3' sm='3'
+            onClick={() => setShowTable(false)}
+          >
             <StatsHorizontal
               color='warning'
+              className={`cursor-pointer ${bgFavorite}`}
               // statTitle='Pending Users'
               icon={<Heart size={20} />}
               renderStats={<h3 className='fw-bolder mb-75'>دوره های مورد علاقه</h3>}
             />
           </Col>
           {/* جدول دوره رزو و علاقه مندی */}
-          <TableBasic/>
-          {/* <TableBacicHeart/> */}
+          {/* <TableBasic userId={id}/> */}
+          {showTable ? <TableBasic userId={id}/> : <TableBacicHeart userId={id}/>}
           
          </Row>
         </section>

@@ -23,7 +23,16 @@ import {
 } from "reactstrap";
 import { useState } from "react";
 
-const StatsCardHome = ({ cols }) => {
+const 
+
+
+
+
+
+
+
+
+StatsCardHome = ({ cols }) => {
 
   // ***************
   const {data: siteStats, status} = useQuery("siteStats", () =>  http.get(`/Home/LandingReport`))
